@@ -11,3 +11,4 @@ Log de alterações da aplicação
 * **Eventos:** Desenvolvido o método Create.
 * **Eventos:** Desenvolvido o método Create e GetWithParams.
 * **Eventos:** Desenvolvido o método Create e GetWithParams.
+* **Sobre:** Desenvolvido o metodo create no módulo sobre.
