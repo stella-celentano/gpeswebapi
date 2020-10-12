@@ -8,3 +8,4 @@ Log de alterações da aplicação
 * **Integrantes:** Implementando create e getall nas rotas privadas.
 * **Publicações:** Implementado o método Create e getWithParams para listar todos, validador de título único.
 * **Categorias:** Reaproveitando a implementação de categories da AsiloWebAPI para implementar os métodos de criar e listar as categorias, validador de nome único.
+* **Eventos:** Desenvolvido o método Create.
