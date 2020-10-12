@@ -1,6 +1,6 @@
-const ContatoSchema = require('./../models/contato')
-const UsuarioSchema = require('./../models/usuario')
-
+const ContatoSchema = require('./../models/contato');
+const UsuarioSchema = require('./../models/usuario');
+const ProcessoSeletivoSchema = require('./../models/processo_seletivo');
 
 class UniqueValidators {
 
@@ -69,6 +69,23 @@ class UniqueValidators {
                     res.status(200).json({ message: "Título disponível.", result: result.length })
                 }
             }
+        })
+    }
+
+      /**Função para validar se o título do Processo Seletivo que está sendo criado é único. */
+      uniqueProcessoSeletivoTitulo(req, res) {
+        const titulo = req.query.title.replace(/%20/g, " ")
+
+        ProcessoSeletivoSchema.find({ titulo: { '$regex': `^${titulo}$`, '$options': 'i' } }, function (err, result) {
+            if (err) {
+                res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
+            } else {
+                if (result.length > 0) {
+                    res.status(200).json({ message: "Já existe um documento com esse título.", result: result.length })
+                } else {
+                    res.status(200).json({ message: "Título disponível.", result: result.length })
+                }
+            } 
         })
     }
 
