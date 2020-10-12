@@ -13,12 +13,12 @@ const SobreSchema= new Schema({
     },
     ordenacao:{
         type: Number,
-        required: true,
+        required: false,
         trim: true
     },
     principal:{
         type: String,
-        required: true,
+        required: false,
         trim: true
     }
 },

@@ -15,5 +15,6 @@ route.get('/unique/usuario/usuario', UniqueValidators.UniqueUsuarioUsuario)
 route.get('/unique/usuario/email', UniqueValidators.UniqueUsuarioEmail)
 route.get('/unique/contato/nome', UniqueValidators.uniqueContatoNome)
 route.get('/unique/evento/titulo', UniqueValidators.uniqueEventoTitulo)
+route.get('/unique/sobre/titulo', UniqueValidators.uniqueSobreTitulo)
 
 module.exports = route
