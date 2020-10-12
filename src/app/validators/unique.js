@@ -1,8 +1,26 @@
 const ContatoSchema = require('./../models/contato')
 const UsuarioSchema = require('./../models/usuario')
+const SobreSchema = require('./../models/sobre')
 
 
 class UniqueValidators {
+
+    /**Função para validar se o título do Sobre que está sendo criado é único. */
+    uniqueSobreTitulo(req, res) {
+        const titulo = req.query.title.replace(/%20/g, " ")
+
+        SobreSchema.find({ titulo: { '$regex': `^${titulo}$`, '$options': 'i' } }, function (err, result) {
+            if (err) {
+                res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
+            } else {
+                if (result.length > 0) {
+                    res.status(200).json({ message: "Já existe um documento com esse título.", result: result.length })
+                } else {
+                    res.status(200).json({ message: "Título disponível.", result: result.length })
+                }
+            }
+        })
+    }
 
     /**Função para validar se o nome do Contato que está sendo criado é único. */
     uniqueContatoNome(req, res) {
