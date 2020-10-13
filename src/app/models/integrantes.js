@@ -11,7 +11,7 @@ const IntegrantesSchema = new Schema({
     
     contato: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
 
@@ -28,7 +28,8 @@ const IntegrantesSchema = new Schema({
 
     dataFim: {
         type: Date,
-        required: false
+        required: false,
+        default: null
     },
 
     projetos: {
