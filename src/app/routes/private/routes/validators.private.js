@@ -6,6 +6,7 @@ route.get('/unique/usuario/nome', UniqueValidators.uniqueUsuarioNome);
 route.get('/unique/usuario/usuario', UniqueValidators.UniqueUsuarioUsuario);
 route.get('/unique/usuario/email', UniqueValidators.UniqueUsuarioEmail);
 route.get('/unique/contato/nome', UniqueValidators.uniqueContatoNome);
+route.get('/unique/integrantes/nome', UniqueValidators.uniqueIntegranteNome);
 route.get('/unique/processo-seletivo/titulo', UniqueValidators.uniqueProcessoSeletivoTitulo);
 
 module.exports = route

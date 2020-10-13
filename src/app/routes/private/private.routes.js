@@ -6,11 +6,13 @@ const ValidatorRoutes = require('./routes/validators.private')
 const AnalyticsRoutes = require('./routes/analytics.private')
 const ContatoRoutes = require('./routes/contato.private')
 const ProcessoSeletivo = require('./routes/processo_seletivo.private')
+const IntegrantesRoutes = require('./routes/integrantes.private')
 
 app.use('/usuario', UserRoutes)
 app.use('/validators', ValidatorRoutes)
 app.use('/analytics', AnalyticsRoutes)
 app.use('/contato', ContatoRoutes)
 app.use('/processo-seletivo', ProcessoSeletivo)
+app.use('/integrantes', IntegrantesRoutes)
 
 module.exports = app
