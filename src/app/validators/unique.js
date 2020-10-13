@@ -1,6 +1,7 @@
 const ContatoSchema = require('./../models/contato');
 const UsuarioSchema = require('./../models/usuario');
 const ProcessoSeletivoSchema = require('./../models/processo_seletivo');
+const integrantesSchema = require('./../models/integrantes')
 
 class UniqueValidators {
 
@@ -16,6 +17,22 @@ class UniqueValidators {
                     res.status(200).json({ message: "Já existe um documento com esse título.", result: result.length })
                 } else {
                     res.status(200).json({ message: "Título disponível.", result: result.length })
+                }
+            }
+        })
+    }
+
+    uniqueIntegranteNome(req, res) {
+        const nome = req.query.nome.replace(/%20/g, " ")
+
+        integrantesSchema.find({ nome: { '$regex': `^${nome}$`, '$options': 'i' } }, function (err, result) {
+            if (err) {
+                res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
+            } else {
+                if (result.length > 0) {
+                    res.status(200).json({ message: "Já existe um integrante com esse nome.", result: result.length })
+                } else {
+                    res.status(200).json({ message: "Nome disponível.", result: result.length })
                 }
             }
         })
