@@ -4,4 +4,4 @@ Log de alterações da aplicação
 
 ### Versão 1.0
 * **Contatos:** Implementado CRUD completo e separado em rotas públicas e privadas.
-* **Eventos:** Desenvolvido o método Create.
+* **Eventos:** Desenvolvido o método Create e GetWithParams.
