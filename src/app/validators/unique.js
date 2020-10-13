@@ -1,5 +1,6 @@
 const ContatoSchema = require('./../models/contato')
 const UsuarioSchema = require('./../models/usuario')
+const EventoSchema = require('./../models/eventos')
 
 
 class UniqueValidators {
@@ -60,6 +61,22 @@ class UniqueValidators {
         const email = req.query.email.replace(/%20/g, " ")
 
         UsuarioSchema.find({ email: { '$regex': `^${email}$`, '$options': 'i' } }, function (err, result) {
+            if (err) {
+                res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
+            } else {
+                if (result.length > 0) {
+                    res.status(200).json({ message: "Já existe um documento com esse título.", result: result.length })
+                } else {
+                    res.status(200).json({ message: "Título disponível.", result: result.length })
+                }
+            }
+        })
+    }
+    //** Função para validar se o título do Evento que está sendo criado é único. */
+    uniqueEventoTitulo(req, res) {
+        const titulo = req.query.title.replace(/%20/g, " ")
+
+        EventoSchema.find({ titulo: { '$regex': `^${titulo}$`, '$options': 'i' } }, function (err, result) {
             if (err) {
                 res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
             } else {

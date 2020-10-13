@@ -11,7 +11,7 @@ const EventoSchema = new Schema({
     required: true,
     trim: true
   },
-  data: {
+  date: {
     type: Date,
     required: true
   }
