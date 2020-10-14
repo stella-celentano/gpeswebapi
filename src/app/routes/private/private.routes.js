@@ -9,6 +9,7 @@ const ProcessoSeletivo = require('./routes/processo_seletivo.private')
 const IntegrantesRoutes = require('./routes/integrantes.private')
 const PublicacoesRoutes = require('./routes/publicacoes.private')
 const CategoriesRoutes = require('./routes/categories.private')
+const EventoRoutes = require('./routes/eventos.private')
 
 app.use('/usuario', UserRoutes)
 app.use('/validators', ValidatorRoutes)
@@ -18,5 +19,6 @@ app.use('/processo-seletivo', ProcessoSeletivo)
 app.use('/integrantes', IntegrantesRoutes)
 app.use('/publicacoes', PublicacoesRoutes)
 app.use('/categories', CategoriesRoutes)
+app.use('/eventos', EventoRoutes)
 
 module.exports = app
