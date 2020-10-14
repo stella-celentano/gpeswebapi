@@ -8,5 +8,7 @@ route.get('/unique/usuario/email', UniqueValidators.UniqueUsuarioEmail);
 route.get('/unique/contato/nome', UniqueValidators.uniqueContatoNome);
 route.get('/unique/integrantes/nome', UniqueValidators.uniqueIntegranteNome);
 route.get('/unique/processo-seletivo/titulo', UniqueValidators.uniqueProcessoSeletivoTitulo);
+route.get('/unique/categoria/nome', UniqueValidators.uniqueCategoriaNome)
+route.get('/unique/publicacoes/titulo', UniqueValidators.uniquePublicacaoTitulo)
 
 module.exports = route
