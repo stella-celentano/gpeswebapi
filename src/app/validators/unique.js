@@ -1,12 +1,11 @@
 const ContatoSchema = require('./../models/contato');
 const UsuarioSchema = require('./../models/usuario');
 const ProcessoSeletivoSchema = require('./../models/processo_seletivo');
-const integrantesSchema = require('./../models/integrantes')
-const UsuarioSchema = require('./../models/usuario')
-const CategoriaSchema = require('./../models/categories')
-const PublicacoesSchema = require('./../models/publicacoes')
-const EventoSchema = require('./../models/eventos')
-const SobreSchema = require('./../models/sobre')
+const integrantesSchema = require('./../models/integrantes');
+const CategoriaSchema = require('./../models/categories');
+const PublicacoesSchema = require('./../models/publicacoes');
+const EventoSchema = require('./../models/eventos');
+const SobreSchema = require('./../models/sobre');
 
 
 class UniqueValidators {
