@@ -4,6 +4,7 @@ Log de alterações da aplicação
 
 ### Versão 1.0
 * **Contatos:** Implementado CRUD completo e separado em rotas públicas e privadas.
+<<<<<<< HEAD
 * **Processo Seletivo:** Criado modelo, controller com os métodos de listar todos e criar, validador de título único, criação do arquivo de rotas para o módulo e alteração no arquivo de rotas privadas para inserir a rota de Processo Seletivo.
 * **Integrantes:** Implementando create e getall nas rotas privadas.
 * **Publicações:** Implementado o método Create e getWithParams para listar todos, validador de título único.
@@ -11,4 +12,6 @@ Log de alterações da aplicação
 * **Eventos:** Desenvolvido o método Create.
 * **Eventos:** Desenvolvido o método Create e GetWithParams.
 * **Eventos:** Desenvolvido o método Create e GetWithParams.
+=======
+>>>>>>> 199d3bc2891e2e0bbff0147b6995401ea65b30c8
 * **Sobre:** Desenvolvido o metodo create no módulo sobre.

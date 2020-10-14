@@ -3,9 +3,12 @@ const UsuarioSchema = require('./../models/usuario');
 const ProcessoSeletivoSchema = require('./../models/processo_seletivo');
 const integrantesSchema = require('./../models/integrantes')
 const UsuarioSchema = require('./../models/usuario')
+<<<<<<< HEAD
 const CategoriaSchema = require('./../models/categories')
 const PublicacoesSchema = require('./../models/publicacoes')
 const EventoSchema = require('./../models/eventos')
+=======
+>>>>>>> 199d3bc2891e2e0bbff0147b6995401ea65b30c8
 const SobreSchema = require('./../models/sobre')
 
 
