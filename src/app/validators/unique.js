@@ -6,6 +6,7 @@ const UsuarioSchema = require('./../models/usuario')
 const CategoriaSchema = require('./../models/categories')
 const PublicacoesSchema = require('./../models/publicacoes')
 
+
 class UniqueValidators {
 
 
@@ -112,6 +113,7 @@ class UniqueValidators {
     }
 
 
+    /**Função para validar se o título da Publicação que está sendo criado é único. */
     uniquePublicacaoTitulo(req, res) {
         const titulo = req.query.title.replace(/%20/g, " ")
 
