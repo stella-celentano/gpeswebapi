@@ -10,3 +10,5 @@ Log de alterações da aplicação
 * **Categorias:** Reaproveitando a implementação de categories da AsiloWebAPI para implementar os métodos de criar e listar as categorias, validador de nome único.
 * **Eventos:** Desenvolvido o método Create e GetWithParams.
 * **Sobre:** Desenvolvido o metodo create no módulo sobre.
+
+### Versão 1.1
