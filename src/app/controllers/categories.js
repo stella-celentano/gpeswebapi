@@ -11,7 +11,7 @@ class Categories {
         if (err) {
           res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
         } else {
-          res.status(200).json({ message: 'Categorias recuperadas com sucesso', data: data })
+          res.status(200).json({ message: 'Dados recuperados com sucesso', data: data })
         }
       })
   }
@@ -21,7 +21,7 @@ class Categories {
       if (err) {
         res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
       } else {
-        res.status(201).json({ message: 'Categoria inserida com sucesso', nome: data['nome'] })
+        res.status(201).json({ message: 'Categoria criada com sucesso', data: data })
       }
     })
   }
