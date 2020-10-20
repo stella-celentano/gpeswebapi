@@ -12,5 +12,5 @@ Log de alterações da aplicação
 * **Sobre:** Desenvolvido o metodo create no módulo sobre.
 
 ### Versão 1.1
-* **Publicações:** Padronização de mensagens de sucesso e erro de requisições feita e foi adicionado ao modelo de dados os campos autores, plataforma, cidade e ano.
+* **Publicações:** Padronização de mensagens de sucesso e erro de requisições feita e foi adicionado ao modelo de dados os campos autores, plataforma, cidade e dataPublicacao.
 * **Categorias:** Padronização de mensagens de sucesso e erro de requisições feita.
