@@ -12,9 +12,5 @@ Log de alterações da aplicação
 * **Sobre:** Desenvolvido o metodo create no módulo sobre.
 
 ### Versão 1.1
-<<<<<<< HEAD
 * **Processo Seletivo:** Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita.
-=======
-* **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita.
->>>>>>> ecf0b2a777e8fef665b4c0c8def28aed7e719e89
