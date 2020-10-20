@@ -13,3 +13,4 @@ Log de alterações da aplicação
 
 ### Versão 1.1
 * **Processo Seletivo:** Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
+* **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita.
