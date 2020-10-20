@@ -34,7 +34,7 @@ class Publicacoes {
     let { keyword, category, columnSort, valueSort } = req.query
 
     if (category) {
-      query['tipo'] = new RegExp(category, "i")
+      query['categoria'] = new RegExp(category, "i")
     }
 
     if (keyword) {
