@@ -44,6 +44,18 @@ class ProcessoSeletivo {
                 }
             })
     }
+    
+    getByTitle(req, res) {
+        let title = req.params.title.replace(/%20/g, " ")
+
+        ProcessoSeletivoSchama.findOne({ titulo: { $eq: title } }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Processo Seletivo recuperado com sucesso', data: data })
+            }
+        })
+    }
 
     create(req, res) {
         ProcessoSeletivoSchama.create(req.body, (err, data) => {
