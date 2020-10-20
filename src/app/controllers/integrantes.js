@@ -67,5 +67,17 @@ class Integrantes {
                 }
             })
     }
+
+    getByName(req, res) {
+        let nome = req.params.nome.replace(/%20/g, " ")
+
+        integrantesSchema.findOne({ nome: { $eq: nome } }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Integrante recuperado com sucesso', data: data })
+            }
+        })
+    }
 }
 module.exports = new Integrantes()
