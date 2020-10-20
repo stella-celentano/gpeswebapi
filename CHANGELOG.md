@@ -12,3 +12,4 @@ Log de alterações da aplicação
 * **Sobre:** Desenvolvido o metodo create no módulo sobre.
 
 ### Versão 1.1
+* **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita.
