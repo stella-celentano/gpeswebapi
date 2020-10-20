@@ -36,9 +36,6 @@ class Integrantes {
             .exec((err, data) => {
                 if (err) {
                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
-                }
-                else if (Array.isArray(data) && data.length == 0) {
-                    res.status(200).json({ message: 'Não foram encontrados dados para os termos da pesquisa! Tente pesquisar novamente' })
                 } else {
                     integrantesSchema
                         .estimatedDocumentCount()
