@@ -14,6 +14,12 @@ const IntegrantesSchema = new Schema({
         required: false,
         trim: true
     },
+    
+    lattes: {
+        type: String,
+        required: false,
+        trim: true
+    },
 
     situacao: {
         type: Boolean,
