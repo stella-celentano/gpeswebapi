@@ -31,8 +31,8 @@ const PublicacoesSchema = new Schema({
     required: true,
     trim: true
   },
-  ano: {
-    type: Number,
+  dataPublicacao: {
+    type: Date,
     required: true
   }
 },
