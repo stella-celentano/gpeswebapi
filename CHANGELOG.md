@@ -17,8 +17,4 @@ Log de alterações da aplicação
 * **Categorias:** Padronização de mensagens de sucesso e erro de requisições feita.
 * **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita.
 * **Integrantes:** Adição do campo lattes nos integrantes correções no metodo getWithParams.
-<<<<<<< HEAD
 * **Sobre:** Padronizando as mensagens de sucesso e erro de requisições feita, Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
-=======
-* **Sobre:** Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
->>>>>>> 4237c82cad86a7501e35d0726ccc0d298edf16de
