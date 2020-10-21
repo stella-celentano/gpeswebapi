@@ -12,6 +12,18 @@ class Publicacoes {
     })
   }
 
+  getByTitle(req, res) {
+    let title = req.params.title.replace(/%20/g, " ")
+
+    publicacoesSchema.findOne({ titulo: title }, (err, data) => {
+      if (err) {
+        res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+      } else {
+        res.status(200).json({ message: 'Publicação recuperada com sucesso', data: data })
+      }
+    })
+  }
+
   getWithParams(req, res) {
 
     const limit = 10
@@ -22,7 +34,7 @@ class Publicacoes {
     let { keyword, category, columnSort, valueSort } = req.query
 
     if (category) {
-      query['tipo'] = new RegExp(category, "i")
+      query['categoria'] = new RegExp(category, "i")
     }
 
     if (keyword) {
