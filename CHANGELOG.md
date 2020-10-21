@@ -18,4 +18,7 @@ Log de alterações da aplicação
 * **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita.
 * **Integrantes:** Adição do campo lattes nos integrantes correções no metodo getWithParams.
 * **Sobre:** Padronizando as mensagens de sucesso e erro de requisições feita, Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
+<<<<<<< HEAD
 * **Processo Seletivo:** Implementando método que atualizar o valor do campo ordenação e alteração no arquivo de rotas privadas para inserir a chamada ao método.
+=======
+>>>>>>> e5a1e27e95675f480931ec1d9b7536aaf4ccd83b
