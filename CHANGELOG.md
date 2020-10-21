@@ -17,3 +17,4 @@ Log de alterações da aplicação
 * **Categorias:** Padronização de mensagens de sucesso e erro de requisições feita.
 * **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita.
 * **Integrantes:** Adição do campo lattes nos integrantes correções no metodo getWithParams.
+* **Processo Seletivo:** Implementando método que atualizar o valor do campo ordenação e alteração no arquivo de rotas privadas para inserir a chamada ao método.
