@@ -15,7 +15,7 @@ Log de alterações da aplicação
 * **Processo Seletivo:** Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Publicações:** Padronização de mensagens de sucesso e erro de requisições feita e foi adicionado ao modelo de dados os campos autores, plataforma, cidade e dataPublicacao, implementado o método de busca por título, alterado parâmetro em getWithParamns e alterações no arquivo de rotas privadas para inserir a chamada do método.
 * **Categorias:** Padronização de mensagens de sucesso e erro de requisições feita.
-* **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita.
+* **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita, corrigindo o método getWithParams e implementando o método getByTitle.
 * **Integrantes:** Adição do campo lattes nos integrantes correções no metodo getWithParams.
 * **Sobre:** Padronizando as mensagens de sucesso e erro de requisições feita, Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Processo Seletivo:** Implementando método que atualizar o valor do campo ordenação e alteração no arquivo de rotas privadas para inserir a chamada ao método.
