@@ -14,7 +14,7 @@ Log de alterações da aplicação
 ### Versão 1.1
 * **Processo Seletivo:** Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Publicações:** Padronização de mensagens de sucesso e erro de requisições feita e foi adicionado ao modelo de dados os campos autores, plataforma, cidade e dataPublicacao.
-* **Categorias:** Padronização de mensagens de sucesso e erro de requisições feita.
+* **Categorias:** Padronização de mensagens de sucesso e erro de requisições feita, corrigindo o método getWithParams e implementando o método getByTitle.
 * **Eventos:** Padronizando as mensagens de sucesso e erro de requisições feita.
 * **Integrantes:** Adição do campo lattes nos integrantes correções no metodo getWithParams.
 * **Sobre:** Padronizando as mensagens de sucesso e erro de requisições feita.
