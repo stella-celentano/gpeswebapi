@@ -20,3 +20,4 @@ Log de alterações da aplicação
 * **Sobre:** Padronizando as mensagens de sucesso e erro de requisições feita, Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Processo Seletivo:** Implementando método que atualizar o valor do campo ordenação e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Integrantes:** Adição do metodo getIntegranteByName.
+* **Sobre:** Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
