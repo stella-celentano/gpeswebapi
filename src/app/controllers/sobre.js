@@ -19,14 +19,42 @@ class Sobre {
                 if (err) {
                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
                 } else {
-                    res.status(200).json({
-                        message: 'Dados recuperados com sucesso', 
-                        data: data, 
-                        page: page,
-                        limit: limit
-                    })
+                    SobreSchema
+                        .find(query)
+                        .exec((err, count) => {
+                            let totalDocuments = count.length
+                            if (err) {
+                                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                            } else {
+                                if (totalDocuments > 0) {
+                                    res.status(200).json({
+                                        message: 'Dados recuperados com sucesso',
+                                        data: data,
+                                        page: page,
+                                        limit: limit,
+                                        count: totalDocuments,
+                                    })
+                                } else {
+                                    res.status(204).json({
+                                        message: 'Não há dados para serem exibidos'
+                                    })
+                                }
+                            }
+                        })
                 }
             })
+    }
+
+    getByTitle(req, res) {
+        let title = req.params.title.replace(/%20/g, " ")
+
+        SobreSchema.findOne({ titulo: { $eq: title } }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Sobre recuperado com sucesso', data: data })
+            }
+        })
     }
 
     create(req, res) {
@@ -34,12 +62,14 @@ class Sobre {
 
         SobreSchema.create(body, (err, data) => {
             if (err) {
-                res.status(500).send({ messa: 'Houve um erro ao processar sua requisição', error: err })
+                res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
             } else {
-                res.status(201).send({ message: 'Sobre criado com sucesso no banco de dados', sobre: data })
+                res.status(201).send({ message: 'Sobre criado com sucesso', sobre: data })
             }
         })
     }
+
+    
 }
 
 module.exports = new Sobre()
