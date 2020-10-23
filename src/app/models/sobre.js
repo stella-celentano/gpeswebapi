@@ -17,7 +17,7 @@ const SobreSchema= new Schema({
         trim: true
     },
     principal:{
-        type: String,
+        type: Boolean,
         required: false,
         trim: true
     }

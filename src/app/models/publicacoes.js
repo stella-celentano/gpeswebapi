@@ -15,6 +15,25 @@ const PublicacoesSchema = new Schema({
     type: String,
     required: true,
     trim: true
+  },
+  autores: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  plataforma: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  cidade: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  dataPublicacao: {
+    type: Date,
+    required: true
   }
 },
   {

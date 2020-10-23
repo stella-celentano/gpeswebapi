@@ -18,11 +18,7 @@ class Integrantes {
         let query = {}
         let page = req.query.page
         let skip = limit * (page - 1)
-        let { keyword, category, columnSort, valueSort } = req.query
-
-        if (category) {
-            query['tipo'] = new RegExp(category, "i")
-        }
+        let { keyword, columnSort, valueSort } = req.query
 
         if (keyword) {
             query = { $text: { $search: `"\"${keyword}\""` } }
@@ -36,9 +32,6 @@ class Integrantes {
             .exec((err, data) => {
                 if (err) {
                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
-                }
-                else if (Array.isArray(data) && data.length == 0) {
-                    res.status(200).json({ message: 'Não foram encontrados dados para os termos da pesquisa! Tente pesquisar novamente' })
                 } else {
                     integrantesSchema
                         .estimatedDocumentCount()
@@ -69,6 +62,18 @@ class Integrantes {
                         })
                 }
             })
+    }
+
+    getByName(req, res) {
+        let nome = req.params.nome.replace(/%20/g, " ")
+
+        integrantesSchema.findOne({ nome: { $eq: nome } }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Integrante recuperado com sucesso', data: data })
+            }
+        })
     }
 }
 module.exports = new Integrantes()

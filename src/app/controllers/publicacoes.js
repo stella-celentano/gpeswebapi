@@ -3,11 +3,23 @@ const publicacoesSchema = require('./../models/publicacoes')
 class Publicacoes {
 
   create(req, res) {
-    publicacoesSchema.create(req.body, (err, publicacao) => {
+    publicacoesSchema.create(req.body, (err, data) => {
       if (err) {
         res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
       } else {
-        res.status(201).send({ message: 'Publicação inserida com sucesso', data: publicacao })
+        res.status(201).send({ message: 'Publicação criada com sucesso', data: data })
+      }
+    })
+  }
+
+  getByTitle(req, res) {
+    let title = req.params.title.replace(/%20/g, " ")
+
+    publicacoesSchema.findOne({ titulo: title }, (err, data) => {
+      if (err) {
+        res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+      } else {
+        res.status(200).json({ message: 'Publicação recuperada com sucesso', data: data })
       }
     })
   }
@@ -22,7 +34,7 @@ class Publicacoes {
     let { keyword, category, columnSort, valueSort } = req.query
 
     if (category) {
-      query['tipo'] = new RegExp(category, "i")
+      query['categoria'] = new RegExp(category, "i")
     }
 
     if (keyword) {
