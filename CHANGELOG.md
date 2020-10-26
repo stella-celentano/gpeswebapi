@@ -21,3 +21,6 @@ Log de alterações da aplicação
 * **Processo Seletivo:** Implementando método que atualizar o valor do campo ordenação e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Integrantes:** Adição do metodo getIntegranteByName.
 * **Sobre:** Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
+
+### Versão 1.2
+* **Processo Seletivo:** Implementado método que atualiza um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
