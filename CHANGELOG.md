@@ -28,3 +28,4 @@ Log de alterações da aplicação
 * **Processo Seletivo:** Implementado rota pública para listagem dos registros.
 * **Integrantes:** criação dos metodos getExIntegrantes e getAtuaisIntegrantes na controller, criação das rotas publicas de integrantes.
 * **Sobre:** Implementado rota pública para listagem dos registros de sobre.
+* **Eventos:** Implementando a rota pública para listar todos.
