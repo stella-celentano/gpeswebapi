@@ -25,3 +25,4 @@ Log de alterações da aplicação
 ### Versão 1.2
 * **Processo Seletivo:** Implementado método que atualiza um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Processo Seletivo:** Implementado método que apaga um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
+* **Processo Seletivo:** Implementado rota pública para listagem dos registros.
