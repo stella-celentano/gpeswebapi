@@ -31,14 +31,19 @@ class Publicacoes {
     let query = {}
     let page = req.query.page
     let skip = limit * (page - 1)
-    let { keyword, category, columnSort, valueSort } = req.query
+    let { category, dateStart, dateFinish, columnSort, valueSort } = req.query
 
     if (category) {
       query['categoria'] = new RegExp(category, "i")
     }
 
-    if (keyword) {
-      query = { $text: { $search: `"\"${keyword}\""` } }
+    if (dateStart && dateFinish) {
+      query['dataPublicacao'] = { $gte: new Date(dateStart), $lte: new Date(dateFinish) }
+    }
+
+    if (dateStart && !dateFinish) {
+      dateFinish = Date.now()
+      query['dataPublicacao'] = { $gte: new Date(dateStart), $lte: new Date(dateFinish) }
     }
 
     publicacoesSchema
@@ -49,9 +54,6 @@ class Publicacoes {
       .exec((err, data) => {
         if (err) {
           res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
-        }
-        else if (Array.isArray(data) && data.length == 0) {
-          res.status(200).json({ message: 'Não foram encontrados dados para os termos da pesquisa! Tente pesquisar novamente' })
         } else {
           publicacoesSchema
             .estimatedDocumentCount()
