@@ -26,3 +26,5 @@ Log de alterações da aplicação
 * **Processo Seletivo:** Implementado método que atualiza um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Processo Seletivo:** Implementado método que apaga um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Processo Seletivo:** Implementado rota pública para listagem dos registros.
+* **Publicações:** Refatorando o método getWithParams do controller para buscar por um período de tempo e para retornar o status corretamente quando não houver dados da busca.
+* **Publicações:** Implementando rota pública para listagem dos registros.
