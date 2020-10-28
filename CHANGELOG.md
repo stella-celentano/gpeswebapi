@@ -26,5 +26,9 @@ Log de alterações da aplicação
 * **Processo Seletivo:** Implementado método que atualiza um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Processo Seletivo:** Implementado método que apaga um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Processo Seletivo:** Implementado rota pública para listagem dos registros.
+<<<<<<< HEAD
 * **Integrantes:** criação dos metodos getExIntegrantes e getAtuaisIntegrantes na controller, criação das rotas publicas de integrantes.
 * **Sobre:** Implementado rota pública para listagem dos registros de sobre.
+=======
+* **Sobre:** Implementado rota pública para listagem dos registros de sobre.
+>>>>>>> 8256d18436400d5293da1d9a8c2fa368dc3b95ad
