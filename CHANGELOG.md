@@ -29,3 +29,5 @@ Log de alterações da aplicação
 * **Integrantes:** criação dos metodos getExIntegrantes e getAtuaisIntegrantes na controller, criação das rotas publicas de integrantes.
 * **Sobre:** Implementado rota pública para listagem dos registros de sobre.
 * **Eventos:** Implementando a rota pública para listar todos.
+* **Eventos:** Implementando e disponibilizando a rota pública para listar um registro de eventos.
+* **Eventos:** Alterando o valor de limit no método getWithParams.
