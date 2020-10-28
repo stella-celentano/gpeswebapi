@@ -20,3 +20,5 @@ Log de alterações da aplicação
 * **Sobre:** Padronizando as mensagens de sucesso e erro de requisições feita.
 * **Processo Seletivo:** Implementando método que atualizar o valor do campo ordenação e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Integrantes:** Adição do metodo getIntegranteByName.
+
+* **Publicações:** Refatorando o método getWithParams do controller para buscar por um período de tempo e para retornar o status corretamente quando não houver dados da busca.
