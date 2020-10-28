@@ -27,3 +27,5 @@ Log de alterações da aplicação
 * **Processo Seletivo:** Implementado método que apaga um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Processo Seletivo:** Implementado rota pública para listagem dos registros.
 * **Eventos:** Implementando a rota pública para listar todos.
+* **Eventos:** Implementando e disponibilizando a rota pública para listar um registro de eventos.
+* **Eventos:** Alterando o valor de limit no método getWithParams.
