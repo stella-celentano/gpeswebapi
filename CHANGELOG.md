@@ -30,3 +30,6 @@ Log de alterações da aplicação
 * **Sobre:** Implementado rota pública para listagem dos registros de sobre.
 * **Publicações:** Refatorando o método getWithParams do controller para buscar por um período de tempo e para retornar o status corretamente quando não houver dados da busca.
 * **Publicações:** Implementando rota pública para listagem dos registros.
+* **Eventos:** Implementando a rota pública para listar todos.
+* **Eventos:** Implementando e disponibilizando a rota pública para listar um registro de eventos.
+* **Eventos:** Alterando o valor de limit no método getWithParams.
