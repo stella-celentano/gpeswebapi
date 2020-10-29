@@ -21,3 +21,15 @@ Log de alterações da aplicação
 * **Processo Seletivo:** Implementando método que atualizar o valor do campo ordenação e alteração no arquivo de rotas privadas para inserir a chamada ao método.
 * **Integrantes:** Adição do metodo getIntegranteByName.
 * **Sobre:** Implementado método de busca por título e alteração no arquivo de rotas privadas para inserir a chamada ao método.
+
+### Versão 1.2
+* **Processo Seletivo:** Implementado método que atualiza um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
+* **Processo Seletivo:** Implementado método que apaga um registro e alteração no arquivo de rotas privadas para inserir a chamada ao método.
+* **Processo Seletivo:** Implementado rota pública para listagem dos registros.
+* **Integrantes:** criação dos metodos getExIntegrantes e getAtuaisIntegrantes na controller, criação das rotas publicas de integrantes.
+* **Sobre:** Implementado rota pública para listagem dos registros de sobre.
+* **Publicações:** Refatorando o método getWithParams do controller para buscar por um período de tempo e para retornar o status corretamente quando não houver dados da busca.
+* **Publicações:** Implementando rota pública para listagem dos registros.
+* **Eventos:** Implementando a rota pública para listar todos.
+* **Eventos:** Implementando e disponibilizando a rota pública para listar um registro de eventos.
+* **Eventos:** Alterando o valor de limit no método getWithParams.

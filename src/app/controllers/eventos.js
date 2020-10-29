@@ -28,15 +28,11 @@ class Evento {
   }
 
   getWithParams(req, res) {
-    const limit = 10
+    let limit = parseInt(req.query.limit)
     let query = {}
     let page = req.query.page
     let skip = limit * (page - 1)
-    let { keyword, category, columnSort, valueSort } = req.query
-
-    if (category) {
-      query['tipo'] = new RegExp(category, "i")
-    }
+    let { keyword, columnSort, valueSort } = req.query
 
     if (keyword) {
       query = { $text: { $search: `"\"${keyword}\""` } }

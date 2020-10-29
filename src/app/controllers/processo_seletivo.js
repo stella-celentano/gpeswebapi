@@ -67,6 +67,19 @@ class ProcessoSeletivo {
         })
     }
 
+    update(req, res) {
+        let title = req.params.title.replace(/%20/g, " ")
+        let body = req.body
+        
+        ProcessoSeletivoSchama.updateOne({ titulo: title }, { $set: body }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(201).json({ message: 'Processo Seletivo atualizado com sucesso', data: data })
+            }
+        })
+    }
+
     updateOrder(req, res) {
         let title = req.params.title.replace(/%20/g, " ")
         const body = req.body
@@ -76,6 +89,16 @@ class ProcessoSeletivo {
                 res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
             } else {
                 res.status(200).json({ message: 'Processo Seletivo atualizado com sucesso', data: data })
+            }
+        })
+    }
+
+    delete(req, res) {
+        ProcessoSeletivoSchama.deleteOne({ _id: req.params.id }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Processo Seletivo apagado com sucesso', data: data })
             }
         })
     }
