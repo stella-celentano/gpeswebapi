@@ -18,11 +18,8 @@ class Integrantes {
         let query = {}
         let page = req.query.page
         let skip = limit * (page - 1)
-        let { keyword, columnSort, valueSort } = req.query
+        let { columnSort, valueSort } = req.query
 
-        if (keyword) {
-            query = { $text: { $search: `"\"${keyword}\""` } }
-        }
 
         integrantesSchema
             .find(query)
@@ -74,6 +71,109 @@ class Integrantes {
                 res.status(200).json({ message: 'Integrante recuperado com sucesso', data: data })
             }
         })
+    }
+
+    getAtuaisIntegrantes(req, res){
+        
+        const limit = 6
+
+        let query = {}
+        let page = req.query.page
+        let skip = limit * (page - 1)
+        let { columnSort, valueSort } = req.query
+
+        integrantesSchema
+            .where('situacao', false)
+            .find(query)
+            .sort([[columnSort, valueSort]])
+            .skip(skip)
+            .limit(limit)
+            .exec((err, data) => {
+                if (err) {
+                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                } else {
+                    integrantesSchema
+                        .where('situacao', false)
+                        .estimatedDocumentCount()
+                        .find(query)
+                        .exec((err, count) => {
+                            let totalDocuments = count.length
+                            if (err) {
+                                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                            } else {
+                                if (totalDocuments > 0) {
+                                    res.status(200).json({
+                                        message: 'Dados recuperados com sucesso',
+                                        data: data,
+                                        page: page,
+                                        limit: limit,
+                                        count: totalDocuments,
+                                    })
+                                } else {
+                                    res.status(204).json({
+                                        message: 'Não há dados para serem exibidos',
+                                        data: data,
+                                        page: page,
+                                        limit: limit,
+                                        count: totalDocuments,
+                                    })
+                                }
+                            }
+                        })
+                }
+            })
+    }
+
+    getExIntegrantes(req,res){
+        
+        const limit = 6
+
+        let query = {}
+        let page = req.query.page
+        let skip = limit * (page - 1)
+        let { columnSort, valueSort } = req.query
+
+
+        integrantesSchema
+            .find(query)
+            .where('situacao', true)
+            .sort([[columnSort, valueSort]])
+            .skip(skip)
+            .limit(limit)
+            .exec((err, data) => {
+                if (err) {
+                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                } else {
+                    integrantesSchema
+                        .where('situacao', true)
+                        .estimatedDocumentCount()
+                        .find(query)
+                        .exec((err, count) => {
+                            let totalDocuments = count.length
+                            if (err) {
+                                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                            } else {
+                                if (totalDocuments > 0) {
+                                    res.status(200).json({
+                                        message: 'Dados recuperados com sucesso',
+                                        data: data,
+                                        page: page,
+                                        limit: limit,
+                                        count: totalDocuments,
+                                    })
+                                } else {
+                                    res.status(204).json({
+                                        message: 'Não há dados para serem exibidos',
+                                        data: data,
+                                        page: page,
+                                        limit: limit,
+                                        count: totalDocuments,
+                                    })
+                                }
+                            }
+                        })
+                }
+            })
     }
 }
 module.exports = new Integrantes()
