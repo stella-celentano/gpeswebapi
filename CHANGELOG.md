@@ -33,3 +33,6 @@ Log de alterações da aplicação
 * **Eventos:** Implementando a rota pública para listar todos.
 * **Eventos:** Implementando e disponibilizando a rota pública para listar um registro de eventos.
 * **Eventos:** Alterando o valor de limit no método getWithParams.
+
+### Versão 1.3
+* **Integrantes:** Alterando a model de integrante para aceitar email.
