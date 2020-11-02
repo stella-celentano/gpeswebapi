@@ -1,7 +1,7 @@
-const express = require('express')
-const route = express.Router()
-const Analytics = require('./../../../controllers/analytics')
+// const express = require('express')
+// const route = express.Router()
+// const Analytics = require('./../../../controllers/analytics')
 
-route.get('/data', Analytics.getData)
+// route.get('/data', Analytics.getData)
 
-module.exports = route
+// module.exports = route
