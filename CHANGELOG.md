@@ -37,3 +37,4 @@ Log de alterações da aplicação
 ### Versão 1.3
 * **Integrantes:** Alterando a model de integrante para aceitar email.
 * **Integrantes:** Adição da rota e metodo para editar integrante.
+* **Eventos:** Implementando o método de update e disponibilizando a rota atualizar.
