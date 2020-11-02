@@ -14,7 +14,7 @@ const SobreRoutes= require('./routes/sobre.private')
 
 app.use('/usuario', UserRoutes)
 app.use('/validators', ValidatorRoutes)
-app.use('/analytics', AnalyticsRoutes)
+// app.use('/analytics', AnalyticsRoutes)
 app.use('/contato', ContatoRoutes)
 app.use('/processo-seletivo', ProcessoSeletivo)
 app.use('/integrantes', IntegrantesRoutes)
