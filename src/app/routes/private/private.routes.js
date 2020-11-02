@@ -10,7 +10,8 @@ const IntegrantesRoutes = require('./routes/integrantes.private')
 const PublicacoesRoutes = require('./routes/publicacoes.private')
 const CategoriesRoutes = require('./routes/categories.private')
 const EventoRoutes = require('./routes/eventos.private')
-const SobreRoutes= require('./routes/sobre.private')
+const SobreRoutes = require('./routes/sobre.private')
+const AutoresRoutes = require('./routes/autores.private')
 
 app.use('/usuario', UserRoutes)
 app.use('/validators', ValidatorRoutes)
@@ -22,5 +23,6 @@ app.use('/publicacoes', PublicacoesRoutes)
 app.use('/categories', CategoriesRoutes)
 app.use('/eventos', EventoRoutes)
 app.use('/sobre', SobreRoutes)
+app.use('/autores', AutoresRoutes)
 
 module.exports = app
