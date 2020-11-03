@@ -73,6 +73,19 @@ class Integrantes {
         })
     }
 
+    update(req, res) {
+        let nome = req.params.nome.replace(/%20/g, " ")
+        let body = req.body
+        
+        integrantesSchema.updateOne({ nome: nome }, { $set: body }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(201).json({ message: 'Integrante atualizado com sucesso', data: data })
+            }
+        })
+    }
+
     getAtuaisIntegrantes(req, res){
         
         const limit = 6
