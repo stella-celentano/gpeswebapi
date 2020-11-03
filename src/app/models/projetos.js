@@ -1,27 +1,15 @@
 const { Schema, model } = require("mongoose")
 
-const IntegrantesSchema = new Schema({
+const ProjetosSchema = new Schema({
 
-    nome: {
+    titulo: {
         type: String,
         required: true,
         minlength: 1,
         trim: true
     },
     
-    email: {
-        type: String,
-        required: false,
-        trim: true
-    },
-
-    contato: {
-        type: String,
-        required: false,
-        trim: true
-    },
-
-    lattes: {
+    descricao: {
         type: String,
         required: false,
         trim: true
@@ -35,7 +23,7 @@ const IntegrantesSchema = new Schema({
 
     dataInicio: {
         type: Date,
-        required: true
+        required: false
     },
 
     dataFim: {
@@ -44,9 +32,9 @@ const IntegrantesSchema = new Schema({
         default: null
     },
 
-    projetos: [{
+    integrantes: [{
         type: Schema.Types.ObjectId,
-        ref: 'projetosSchema',
+        ref: 'integrantesSchema',
         required: false
     }]
 
@@ -57,4 +45,4 @@ const IntegrantesSchema = new Schema({
     }
 )
 
-module.exports = model('integrantesSchema', IntegrantesSchema)
+module.exports = model('projetosSchema', ProjetosSchema)

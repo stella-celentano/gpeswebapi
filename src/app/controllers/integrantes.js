@@ -1,14 +1,52 @@
 const integrantesSchema = require('./../models/integrantes')
+const projetosSchema = require('./../models/projetos')
 
 class Integrantes {
+    
     create(req, res) {
-        integrantesSchema.create(req.body, (err, data) => {
-            if (err) {
-                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-            } else {
-                res.status(201).json({ message: 'Integrante criado com sucesso', data: data })
-            }
-        })
+        const body = req.body
+        let idProjetos = [{}]
+
+        idProjetos = body['projetos']
+
+        console.log('body: ', body)
+        console.log('projetos: ', idProjetos)
+
+        if (idProjetos == null) {
+            integrantesSchema.create(req.body, (err, integrante) => {
+                if (err) {
+                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                } else {
+                    res.status(201).json({ message: 'Integrante criado com sucesso', data: integrante })
+                }
+            })
+        } else {
+            integrantesSchema.create(body, (err, integrante) => {
+                if (err) {
+                    console.log('quebrou aq')
+                    res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
+                } else {
+                    idProjetos.forEach(elemento => {
+                        projetosSchema.findById(elemento, (err, projetos) => {
+                            console.log('elemento: ', elemento)
+                            if (err) {
+                                res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
+                            } else {
+                                projetos.integrantes.push(integrante)
+                            }
+                        })
+                    })
+                    integrante.save({}, (err) => {
+                        console.log('integrante', integrante)
+                        if (err) {
+                            res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
+                        } else {
+                            res.status(201).send({ message: 'Integrante criado com sucesso', data: integrante })
+                        }
+                    })
+                }
+            })
+        }
     }
 
     getWithParams(req, res) {
@@ -23,6 +61,7 @@ class Integrantes {
 
         integrantesSchema
             .find(query)
+            .populate('projetosSchema', { nome: 1 })
             .sort([[columnSort, valueSort]])
             .skip(skip)
             .limit(limit)
@@ -33,6 +72,7 @@ class Integrantes {
                     integrantesSchema
                         .estimatedDocumentCount()
                         .find(query)
+                        .populate('projetosSchema', { nome: 1 })
                         .exec((err, count) => {
                             let totalDocuments = count.length
                             if (err) {
@@ -87,7 +127,7 @@ class Integrantes {
     }
 
     getAtuaisIntegrantes(req, res){
-        
+
         const limit = 6
 
         let query = {}
@@ -98,6 +138,7 @@ class Integrantes {
         integrantesSchema
             .where('situacao', false)
             .find(query)
+            .populate('projetosSchema', { nome: 1 })
             .sort([[columnSort, valueSort]])
             .skip(skip)
             .limit(limit)
@@ -109,6 +150,7 @@ class Integrantes {
                         .where('situacao', false)
                         .estimatedDocumentCount()
                         .find(query)
+                        .populate('projetosSchema', { nome: 1 })
                         .exec((err, count) => {
                             let totalDocuments = count.length
                             if (err) {
@@ -137,8 +179,8 @@ class Integrantes {
             })
     }
 
-    getExIntegrantes(req,res){
-        
+    getExIntegrantes(req, res) {
+
         const limit = 6
 
         let query = {}
@@ -150,6 +192,7 @@ class Integrantes {
         integrantesSchema
             .find(query)
             .where('situacao', true)
+            .populate('projetosSchema', { nome: 1 })
             .sort([[columnSort, valueSort]])
             .skip(skip)
             .limit(limit)
@@ -161,6 +204,7 @@ class Integrantes {
                         .where('situacao', true)
                         .estimatedDocumentCount()
                         .find(query)
+                        .populate('projetosSchema', { nome: 1 })
                         .exec((err, count) => {
                             let totalDocuments = count.length
                             if (err) {
