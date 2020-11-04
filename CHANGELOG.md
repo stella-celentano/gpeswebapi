@@ -40,3 +40,4 @@ Log de alterações da aplicação
 * **Eventos:** Implementando o método de update e disponibilizando a rota atualizar.
 * **Integrantes:** Adição da rota e metodo para excluir integrante.
 * **Sobre:** Implementando o método de update e disponibilizando a rota atualizar.
+* **Sobre:** Implementando metodo de ordenação do Sobre.

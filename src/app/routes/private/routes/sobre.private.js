@@ -6,6 +6,7 @@ route.get('/listar-todos', SobreController.getWithParams)
 route.post('/criar', SobreController.create)
 route.get('/listar-um/:title', SobreController.getByTitle);
 route.put('/atualizar/:title', SobreController.update);
+route.put('/atualizar-ordenacao/:title', SobreController.updateOrder);
 
 
 module.exports = route
