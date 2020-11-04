@@ -69,6 +69,19 @@ class Sobre {
         })
     }
 
+    updateOrder(req, res) {
+        let title = req.params.title.replace(/%20/g, " ")
+        const body = req.body
+
+        SobreSchema.updateOne({ titulo: title }, { $set: body }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Sobre atualizado com sucesso', data: data })
+            }
+        })
+    }
+
     
 }
 
