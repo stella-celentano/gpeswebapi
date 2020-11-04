@@ -39,3 +39,4 @@ Log de alterações da aplicação
 * **Integrantes:** Adição da rota e metodo para editar integrante.
 * **Eventos:** Implementando o método de update e disponibilizando a rota atualizar.
 * **Integrantes:** Adição da rota e metodo para excluir integrante.
+* **Sobre:** Implementando o método de update e disponibilizando a rota atualizar.
