@@ -41,3 +41,4 @@ Log de alterações da aplicação
 * **Integrantes:** Adição da rota e metodo para excluir integrante.
 * **Sobre:** Implementando o método de update e disponibilizando a rota atualizar.
 * **Sobre:** Implementando metodo de ordenação do Sobre.
+* **Autores:** Implementado o modelo de dados, controller com os métodos getWithParams e create, rotas listar e criar e validador de nome único com a rota do validador.
