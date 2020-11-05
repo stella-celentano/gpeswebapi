@@ -12,6 +12,19 @@ class Publicacoes {
     })
   }
 
+  update(req, res) {
+    let title = req.params.title.replace(/%20/g, " ")
+    let body = req.body
+
+    publicacoesSchema.updateOne({ titulo: title }, { $set: body }, (err, data) => {
+      if (err) {
+        res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+      } else {
+        res.status(201).json({ message: 'Publicação atualizada com sucesso', data: data })
+      }
+    })
+  }
+
   getByTitle(req, res) {
     let title = req.params.title.replace(/%20/g, " ")
 
@@ -23,6 +36,20 @@ class Publicacoes {
       }
     })
   }
+
+  /*Por enquanto não terá */
+  getPublicacoesByTitleWithoutFiles(req, res) {
+    let title = req.params.title.replace(/%20/g, " ")
+
+    publicacoesSchema.findOne({ titulo: { $eq: title } }, (err, document) => {
+      if (err) {
+        res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+      } else {
+        res.status(200).json({ message: 'Publicação recuperada com sucesso', data: document })
+      }
+    })
+  }
+
 
   getWithParams(req, res) {
 
