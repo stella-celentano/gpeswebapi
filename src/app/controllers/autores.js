@@ -6,7 +6,7 @@ class Autores {
     let { fields } = req.query
 
     autoresSchema
-      .find({}, (err, data) => {
+      .find({}, { nome: 1, _id: 0 }, (err, data) => {
         if (err) {
           res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
         } else {
