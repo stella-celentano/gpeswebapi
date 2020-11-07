@@ -17,7 +17,7 @@ const PublicacoesSchema = new Schema({
     trim: true
   },
   autores: {
-    type: String,
+    type: Array,
     required: true,
     trim: true
   },
