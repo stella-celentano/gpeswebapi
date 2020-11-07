@@ -9,12 +9,18 @@ const IntegrantesSchema = new Schema({
         trim: true
     },
     
+    email: {
+        type: String,
+        required: false,
+        trim: true
+    },
+
     contato: {
         type: String,
         required: false,
         trim: true
     },
-    
+
     lattes: {
         type: String,
         required: false,

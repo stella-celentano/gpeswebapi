@@ -33,3 +33,14 @@ Log de alterações da aplicação
 * **Eventos:** Implementando a rota pública para listar todos.
 * **Eventos:** Implementando e disponibilizando a rota pública para listar um registro de eventos.
 * **Eventos:** Alterando o valor de limit no método getWithParams.
+
+### Versão 1.3
+* **Integrantes:** Alterando a model de integrante para aceitar email.
+* **Integrantes:** Adição da rota e metodo para editar integrante.
+* **Eventos:** Implementando o método de update e disponibilizando a rota atualizar.
+* **Integrantes:** Adição da rota e metodo para excluir integrante.
+* **Sobre:** Implementando o método de update e disponibilizando a rota atualizar.
+* **Sobre:** Implementando metodo de ordenação do Sobre.
+* **Autores:** Implementado o modelo de dados, controller com os métodos getWithParams e create, rotas listar e criar e validador de nome único com a rota do validador.
+* **Publicações:** Implementado o método update e getPublicacoesByTitleWithoutFiles no controller e disponibilizado as rotas getdata e atualizar e modificado o campo autores.
+* **Autores:** Alterado o método getWithParams.
