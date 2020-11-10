@@ -1,52 +1,19 @@
 const integrantesSchema = require('./../models/integrantes')
+const projetos = require('./../models/projetos')
 const projetosSchema = require('./../models/projetos')
 
 class Integrantes {
-    
+
     create(req, res) {
         const body = req.body
-        let idProjetos = [{}]
 
-        idProjetos = body['projetos']
-
-        console.log('body: ', body)
-        console.log('projetos: ', idProjetos)
-
-        if (idProjetos == null) {
-            integrantesSchema.create(req.body, (err, integrante) => {
-                if (err) {
-                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-                } else {
-                    res.status(201).json({ message: 'Integrante criado com sucesso', data: integrante })
-                }
-            })
-        } else {
-            integrantesSchema.create(body, (err, integrante) => {
-                if (err) {
-                    console.log('quebrou aq')
-                    res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
-                } else {
-                    idProjetos.forEach(elemento => {
-                        projetosSchema.findById(elemento, (err, projetos) => {
-                            console.log('elemento: ', elemento)
-                            if (err) {
-                                res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
-                            } else {
-                                projetos.integrantes.push(integrante)
-                            }
-                        })
-                    })
-                    integrante.save({}, (err) => {
-                        console.log('integrante', integrante)
-                        if (err) {
-                            res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
-                        } else {
-                            res.status(201).send({ message: 'Integrante criado com sucesso', data: integrante })
-                        }
-                    })
-                }
-            })
-        }
+        integrantesSchema.create(req.body, (err, integrante) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(201).json({ message: 'Integrante criado com sucesso', data: integrante })
+            }
+        })
     }
 
     getWithParams(req, res) {
@@ -61,7 +28,7 @@ class Integrantes {
 
         integrantesSchema
             .find(query)
-            .populate('projetosSchema', { nome: 1 })
+            .populate('projetosSchema', { titulo: 1 })
             .sort([[columnSort, valueSort]])
             .skip(skip)
             .limit(limit)
@@ -72,7 +39,7 @@ class Integrantes {
                     integrantesSchema
                         .estimatedDocumentCount()
                         .find(query)
-                        .populate('projetosSchema', { nome: 1 })
+                        .populate('projetosSchema', { titulo: 1 })
                         .exec((err, count) => {
                             let totalDocuments = count.length
                             if (err) {
@@ -116,17 +83,17 @@ class Integrantes {
     update(req, res) {
         let nome = req.params.nome.replace(/%20/g, " ")
         let body = req.body
-        
-        integrantesSchema.updateOne({ nome: nome }, { $set: body }, (err, data) => {
+
+        integrantesSchema.updateOne({ nome: nome }, { $set: body }, (err, result) => {
             if (err) {
                 res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
             } else {
-                res.status(201).json({ message: 'Integrante atualizado com sucesso', data: data })
+                res.status(201).json({ message: 'Integrante atualizado com sucesso', data: result })
             }
         })
     }
 
-    getAtuaisIntegrantes(req, res){
+    getAtuaisIntegrantes(req, res) {
 
         const limit = 6
 
@@ -234,11 +201,36 @@ class Integrantes {
     }
 
     delete(req, res) {
-        integrantesSchema.deleteOne({ _id: req.params.id }, (err, data) => {
+        const integranteId = req.params.id
+
+        integrantesSchema.findOne({ _id: integranteId }, (err) => {
             if (err) {
-                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
             } else {
-                res.status(200).json({ message: 'Integrante apagado com sucesso', data: data })
+                projetosSchema
+                    .find()
+                    .where('integrantes', integranteId)
+                    .exec((err, projeto) => {
+                        if (err) {
+                            res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                        } else {
+                            projeto.forEach(elemento => {
+                                elemento.integrantes.pull(integranteId)
+                                projetosSchema.updateOne({ _id: elemento._id }, { $set: elemento }, (err) => {
+                                    if (err) {
+                                        res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                                    }
+                                })
+                            })
+                            integrantesSchema.deleteOne({ _id: integranteId }, (err, data) => {
+                                if (err) {
+                                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                                } else {
+                                    res.status(200).json({ message: 'Integrante apagado com sucesso', data: data })
+                                }
+                            })
+                        }
+                    })
             }
         })
     }
