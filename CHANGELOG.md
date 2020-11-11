@@ -50,3 +50,4 @@ Log de alterações da aplicação
 * **Projetos:** criação das rotas privadas de projetos, criação dos metodos adicionar, editar e excluir.
 * **Sobre:** Implementando metodo delete e disponibilizando a rota.
 * **Sobre:** Implementando metodo update para o principal e disponibilizando a rota.
+* **Publicações:** Implementando o método delete e disponibilizando a rota privada apagar
