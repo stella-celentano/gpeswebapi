@@ -48,3 +48,4 @@ Log de alterações da aplicação
 ### Versão 1.4
 * **Integrantes:** alterações dos metodos editar, criar, listar e deletar.
 * **Projetos:** criação das rotas privadas de projetos, criação dos metodos adicionar, editar e excluir.
+* **Sobre:** Implementando metodo delete e disponibilizando a rota.
