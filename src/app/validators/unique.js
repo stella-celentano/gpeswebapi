@@ -7,6 +7,7 @@ const PublicacoesSchema = require('./../models/publicacoes');
 const EventoSchema = require('./../models/eventos');
 const SobreSchema = require('./../models/sobre');
 const AutoresSchema = require('./../models/autores');
+const InscricaoSchema = require('./../models/inscricao');
 
 
 class UniqueValidators {
@@ -198,6 +199,59 @@ class UniqueValidators {
             }
         })
     }
+
+    /**Função para validar se o nome da inscrição que está sendo criada é único. */
+    uniqueInscricaoNome(req, res) {
+        const nome = req.query.name.replace(/%20/g, " ")
+
+        InscricaoSchema.find({ nome: { '$regex': `^${nome}$`, '$options': 'i' } }, function (err, result) {
+            if (err) {
+                res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
+            } else {
+                if (result.length > 0) {
+                    res.status(200).json({ message: "Já existe um documento com esse título.", result: result.length })
+                } else {
+                    res.status(200).json({ message: "Nome disponível.", result: result.length })
+                }
+            }
+        })
+    }
+
+    /**Função para validar se o email da inscrição que está sendo criada é único. */
+    uniqueInscricaoEmail(req, res) {
+        const email = req.query.email.replace(/%20/g, " ")
+
+        InscricaoSchema.find({ email: { '$regex': `^${email}$`, '$options': 'i' } }, function (err, result) {
+            if (err) {
+                res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
+            } else {
+                if (result.length > 0) {
+                    res.status(200).json({ message: "Já existe um documento com esse email.", result: result.length })
+                } else {
+                    res.status(200).json({ message: "Email disponível.", result: result.length })
+                }
+            }
+        })
+    }
+
+    /**Função para validar se o ra da inscrição que está sendo criada é único. */
+    uniqueInscricaoRa(req, res) {
+        const ra = req.query.ra.replace(/%20/g, " ")
+
+        InscricaoSchema.find({ ra: { '$regex': `^${ra}$`, '$options': 'i' } }, function (err, result) {
+            if (err) {
+                res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
+            } else {
+                if (result.length > 0) {
+                    res.status(200).json({ message: "Já existe um documento com esse RA.", result: result.length })
+                } else {
+                    res.status(200).json({ message: "RA disponível.", result: result.length })
+                }
+            }
+        })
+    }
+
+
 
 
 
