@@ -52,3 +52,4 @@ Log de alterações da aplicação
 * **Sobre:** Implementando metodo update para o principal e disponibilizando a rota.
 * **Publicações:** Implementando o método delete e disponibilizando a rota privada apagar
 * **Eventos:** Implementando o método de delete e disponibilizando a rota apagar.
+* **Processo Seletivo - Inscrição:** Implementado controller, model, validação e rotas para Inscrição, desenvolvido método create e disponibilizada rota de acesso.
