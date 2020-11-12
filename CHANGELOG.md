@@ -44,5 +44,7 @@ Log de alterações da aplicação
 * **Autores:** Implementado o modelo de dados, controller com os métodos getWithParams e create, rotas listar e criar e validador de nome único com a rota do validador.
 * **Publicações:** Implementado o método update e getPublicacoesByTitleWithoutFiles no controller e disponibilizado as rotas getdata e atualizar e modificado o campo autores.
 * **Autores:** Alterado o método getWithParams.
+
+### Versão 1.4
 * **Integrantes:** alterações dos metodos editar, criar, listar e deletar.
 * **Projetos:** criação das rotas privadas de projetos, criação dos metodos adicionar, editar e excluir.
