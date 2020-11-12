@@ -28,7 +28,6 @@ class Integrantes {
 
         integrantesSchema
             .find(query)
-            .populate('projetosSchema', { titulo: 1 })
             .sort([[columnSort, valueSort]])
             .skip(skip)
             .limit(limit)
@@ -39,7 +38,6 @@ class Integrantes {
                     integrantesSchema
                         .estimatedDocumentCount()
                         .find(query)
-                        .populate('projetosSchema', { titulo: 1 })
                         .exec((err, count) => {
                             let totalDocuments = count.length
                             if (err) {
@@ -77,7 +75,7 @@ class Integrantes {
             } else {
                 res.status(200).json({ message: 'Integrante recuperado com sucesso', data: data })
             }
-        })
+        }).populate('projetosIntegrante', { titulo: 1 })
     }
 
     update(req, res) {
@@ -105,7 +103,6 @@ class Integrantes {
         integrantesSchema
             .where('situacao', false)
             .find(query)
-            .populate('projetosSchema', { nome: 1 })
             .sort([[columnSort, valueSort]])
             .skip(skip)
             .limit(limit)
@@ -117,7 +114,6 @@ class Integrantes {
                         .where('situacao', false)
                         .estimatedDocumentCount()
                         .find(query)
-                        .populate('projetosSchema', { nome: 1 })
                         .exec((err, count) => {
                             let totalDocuments = count.length
                             if (err) {
@@ -159,7 +155,6 @@ class Integrantes {
         integrantesSchema
             .find(query)
             .where('situacao', true)
-            .populate('projetosSchema', { nome: 1 })
             .sort([[columnSort, valueSort]])
             .skip(skip)
             .limit(limit)
@@ -171,7 +166,6 @@ class Integrantes {
                         .where('situacao', true)
                         .estimatedDocumentCount()
                         .find(query)
-                        .populate('projetosSchema', { nome: 1 })
                         .exec((err, count) => {
                             let totalDocuments = count.length
                             if (err) {

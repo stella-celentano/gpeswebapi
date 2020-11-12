@@ -4,7 +4,7 @@ const integrantesSchema = require('./../models/integrantes')
 class Projetos {
     getWithParams(req, res) {
 
-        const limit = 20
+        const limit = 10
 
         let query = {}
         let page = req.query.page
@@ -14,7 +14,6 @@ class Projetos {
 
         projetosSchema
             .find(query)
-            .populate('integrantesSchema', { nome: 1 })
             .sort([[columnSort, valueSort]])
             .skip(skip)
             .limit(limit)
@@ -25,7 +24,6 @@ class Projetos {
                     projetosSchema
                         .estimatedDocumentCount()
                         .find(query)
-                        .populate('integrantesSchema', { nome: 1 })
                         .exec((err, count) => {
                             let totalDocuments = count.length
                             if (err) {
@@ -54,6 +52,18 @@ class Projetos {
             })
     }
 
+    getProjetoByTitulo(req, res){
+        let titulo = req.params.titulo.replace(/%20/g, " ")
+
+        projetosSchema.findOne({ titulo: { $eq: titulo } }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Projeto recuperado com sucesso', data: data })
+            }
+        }).populate('integrantes', { nome: 1 })
+    }
+
     create(req, res) {
         const body = req.body
         let idIntegrantes = [{}]
@@ -78,11 +88,16 @@ class Projetos {
                             if (err) {
                                 res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
                             } else {
-                                if (integrante.projetos == null) {
-                                    integrante.projetos = [projeto._id]
+                                if (integrante.projetosIntegrante == null) {
+                                    integrante.projetosIntegrante = [projeto._id]
                                 } else {
-                                    integrante.projetos.push(projeto._id)
+                                    integrante.projetosIntegrante.push(projeto._id)
                                 }
+                                integrante.save({}, err =>{
+                                    if(err){
+                                        res.status(500).send({ message: 'Houve um erro ao processar sua requisição', error: err })
+                                    }
+                                })
                             }
                         })
                     })
@@ -122,7 +137,7 @@ class Projetos {
                         } else {
                             idIntegrantes.forEach(elemento => {
                                 projetosSchema.findById(elemento, (err, integrante) => {
-                                    integrante.projetos.push(data._id)
+                                    integrante.projetosIntegrante.push(data._id)
                                     integrante.save({}, (err) => {
                                         if (err) {
                                             res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })

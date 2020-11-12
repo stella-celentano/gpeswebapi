@@ -44,12 +44,11 @@ const IntegrantesSchema = new Schema({
         default: null
     },
 
-    projetos: [{
+    projetosIntegrante: [{
         type: Schema.Types.ObjectId,
         ref: 'projetosSchema',
         required: false
     }]
-
 },
     {
         versionKey: false,
