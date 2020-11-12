@@ -8,6 +8,7 @@ route.get('/listar-um/:title', SobreController.getByTitle);
 route.put('/atualizar/:title', SobreController.update);
 route.put('/atualizar-ordenacao/:title', SobreController.updateOrder);
 route.delete('/apagar/:id', SobreController.delete);
+route.put('/atualizar-principal/:id', SobreController.updatePrincipal);
 
 
 module.exports = route

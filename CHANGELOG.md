@@ -49,3 +49,4 @@ Log de alterações da aplicação
 * **Integrantes:** alterações dos metodos editar, criar, listar e deletar.
 * **Projetos:** criação das rotas privadas de projetos, criação dos metodos adicionar, editar e excluir.
 * **Sobre:** Implementando metodo delete e disponibilizando a rota.
+* **Sobre:** Implementando metodo update para o principal e disponibilizando a rota.
