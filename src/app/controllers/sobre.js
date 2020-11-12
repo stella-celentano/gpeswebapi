@@ -95,6 +95,17 @@ class Sobre {
         })
     }
 
+    updatePrincipal(req, res) {
+        SobreSchema.updateMany({ }, { principal: false },{ multi: true }, function(){})
+        SobreSchema.updateOne({ _id: req.params.id }, { principal: true }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Sobre atualizado com sucesso', data: data })
+            }
+        })
+    }
+
     delete(req, res) {
         SobreSchema.deleteOne({ _id: req.params.id }, (err, data) => {
             if (err) {

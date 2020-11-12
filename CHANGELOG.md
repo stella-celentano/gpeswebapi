@@ -45,3 +45,4 @@ Log de alterações da aplicação
 * **Publicações:** Implementado o método update e getPublicacoesByTitleWithoutFiles no controller e disponibilizado as rotas getdata e atualizar e modificado o campo autores.
 * **Autores:** Alterado o método getWithParams.
 * **Sobre:** Implementando metodo delete e disponibilizando a rota.
+* **Sobre:** Implementando metodo update para o principal e disponibilizando a rota.
