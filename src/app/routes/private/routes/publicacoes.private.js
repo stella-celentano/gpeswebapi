@@ -7,5 +7,6 @@ route.get('/listar-todos', Publicacoes.getWithParams)
 route.get('/listar-um/:title', Publicacoes.getByTitle)
 route.get('/getdata/:title', Publicacoes.getPublicacoesByTitleWithoutFiles)
 route.put('/atualizar/:title', Publicacoes.update)
+route.delete('/apagar', Publicacoes.delete)
 
 module.exports = route
