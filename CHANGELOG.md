@@ -55,4 +55,4 @@ Log de alterações da aplicação
 * **Processo Seletivo - Inscrição:** Implementado controller, model, validação e rotas para Inscrição, desenvolvido método create e disponibilizada rota de acesso.
 
 ### Versão 1.5
-* **Integrantes:** Implementação das rotas e metodo editar e getByTitulo.
+* **Projetos:** Implementação das rotas e metodo editar e getByTitulo.
