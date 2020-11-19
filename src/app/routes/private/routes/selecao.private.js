@@ -6,5 +6,6 @@ route.get('/listar-todos', Selecao.getWithParams);
 route.get('/listar-um/:title', Selecao.getByTitle);
 route.put('/atualizar/:title', Selecao.update);
 route.post('/criar', Selecao.create);
+route.delete('/apagar/:id', Selecao.delete);
 
 module.exports = route
