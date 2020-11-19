@@ -8,6 +8,8 @@ const EventoSchema = require('./../models/eventos');
 const SobreSchema = require('./../models/sobre');
 const AutoresSchema = require('./../models/autores');
 const InscricaoSchema = require('./../models/inscricao');
+const ProjetosSchema = require('../models/projetos');
+
 
 
 class UniqueValidators {
@@ -195,6 +197,22 @@ class UniqueValidators {
                     res.status(200).json({ message: "Já existe um documento com esse título.", result: result.length })
                 } else {
                     res.status(200).json({ message: "Autor disponível.", result: result.length })
+                }
+            }
+        })
+    }
+
+    uniqueProjetoTitulo(req, res){
+        const titulo = req.query.titulo.replace(/%20/g, " ")
+
+        ProjetosSchema.find({ titulo: { '$regex': `^${titulo}$`, '$options': 'i' } }, function (err, result) {
+            if (err) {
+                res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
+            } else {
+                if (result.length > 0) {
+                    res.status(200).json({ message: "Já existe um projeto com esse título.", result: result.length })
+                } else {
+                    res.status(200).json({ message: "Título disponível.", result: result.length })
                 }
             }
         })

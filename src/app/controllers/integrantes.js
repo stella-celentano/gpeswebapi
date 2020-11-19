@@ -16,6 +16,41 @@ class Integrantes {
         })
     }
 
+    getAll(req, res){
+        integrantesSchema
+            .find({})
+            .exec((err, data) => {
+                if (err) {
+                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                } else {
+                    integrantesSchema
+                        .estimatedDocumentCount()
+                        .find({})
+                        .exec((err, count) => {
+                            let totalDocuments = count.length
+                            if (err) {
+                                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                            } else {
+                                if (totalDocuments > 0) {
+                                    res.status(200).json({
+                                        message: 'Dados recuperados com sucesso',
+                                        data: data,
+                                        count: totalDocuments,
+                                    })
+                                    
+                                } else {
+                                    res.status(204).json({
+                                        message: 'Não há dados para serem exibidos',
+                                        data: data,
+                                        count: totalDocuments,
+                                    })
+                                }
+                            }
+                        })
+                }
+            })
+    }
+
     getWithParams(req, res) {
 
         const limit = 10
