@@ -55,9 +55,21 @@ class Selecao {
                 if (err) {
                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
                 } else {
-                    res.status(200).json({ message: 'Processo Seletivo recuperado com sucesso', data: data })
+                    res.status(200).json({ message: 'Seleção recuperada com sucesso', data: data })
                 }
             })
+    }
+
+    getByNameInscrito(req, res) {
+        let name = req.params.name.replace(/%20/g, " ")
+
+        InscricaoSchema.findOne({ nome: { $eq: name } }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Inscrito recuperado com sucesso', data: data })
+            }
+        })
     }
 
     create(req, res) {
