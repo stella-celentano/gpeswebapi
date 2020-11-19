@@ -45,6 +45,20 @@ class Selecao {
             })
     }
 
+    getByTitle(req, res) {
+        let title = req.params.title.replace(/%20/g, " ")
+
+        SelecaoSchema.findOne({ titulo: { $eq: title } })
+        .populate('inscritos', {nome: 1, email: 1, curso: 1, semestre: 1})
+        .exec((err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Processo Seletivo recuperado com sucesso', data: data })
+            }
+        })
+    }
+
     create(req, res) {
         SelecaoSchema.create(req.body, (err, data) => {
             if (err) {
