@@ -53,3 +53,9 @@ Log de alterações da aplicação
 * **Publicações:** Implementando o método delete e disponibilizando a rota privada apagar
 * **Eventos:** Implementando o método de delete e disponibilizando a rota apagar.
 * **Processo Seletivo - Inscrição:** Implementado controller, model, validação e rotas para Inscrição, desenvolvido método create e disponibilizada rota de acesso.
+
+### Versão 1.5
+* **Projetos:** Implementação das rotas e metodo editar e getByTitulo.
+* **Processo Seletivo - Inscrição:** Implementado envio de email assim que a inscrição é realizada. Alteração do método create inscrição para suportar o relacionamento 1:N com seleção. Implementação dos métodos e disponibilização das rotas privadas para: criar uma seleção, buscar todas seleções existentes, buscas os detalhes de uma seleção, editar uma seleção e apagar uma seleção e método que busca os detalhes de um inscrito.
+
+### Versão 1.6
