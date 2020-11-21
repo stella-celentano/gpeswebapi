@@ -35,7 +35,7 @@ services:
       - "27017:27017"
     volumes:
       - type: bind
-        source: .
+        source: ./data/db
         target: /data/db
     networks: 
       - app-network
