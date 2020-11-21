@@ -12,6 +12,16 @@ class Inscricao {
         })
     }
 
+    get(req, res) {
+        InscricaoSchema.find({}, (err, data) => {
+            if (err) {
+                res.send(err)
+            } else {
+                res.send(data)
+            }
+        })
+    }
+
 }
 
 module.exports = new Inscricao()

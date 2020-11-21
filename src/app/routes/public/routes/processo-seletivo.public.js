@@ -8,4 +8,6 @@ route.get('/listar-todos', ProcessoSeletivoController.getWithParams);
 
 route.post('/criar', InscricaoController.create);
 
+route.get('/lista-inscricao', InscricaoController.get)
+
 module.exports = route;
