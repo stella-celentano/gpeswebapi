@@ -45,6 +45,11 @@ const InscricaoSchema = new Schema({
         type: String,
         required: true,
         trim: true
+    }, 
+    selecao: {
+        type: Schema.Types.ObjectId,
+        ref: 'selecaoSchema',
+        required: true
     }
 },
     {
