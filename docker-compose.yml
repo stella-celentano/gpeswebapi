@@ -1,5 +1,4 @@
-version: '3'
-
+version: '3.2'
 services:
   nodejs:
     build:
@@ -23,7 +22,6 @@ services:
     networks:
       - app-network
     command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon index.js
-  
   db:
     image: mongo:4.1.8-xenial
     container_name: db
@@ -33,14 +31,14 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=$DB_USER
       - MONGO_INITDB_ROOT_PASSWORD=$DB_PASS
     volumes:
-      - dbdata: /data/db
+      - type: bind
+        source: .
+        target: /data/db
     networks: 
-      - app_network
-
-  networks: 
-    app-network:
-      driver: bridge
-  
-  volumes:
-    dbdata:
-    node_modules:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  dbdata:
+  node_modules:
