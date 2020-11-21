@@ -59,3 +59,4 @@ Log de alterações da aplicação
 * **Processo Seletivo - Inscrição:** Implementado envio de email assim que a inscrição é realizada. Alteração do método create inscrição para suportar o relacionamento 1:N com seleção. Implementação dos métodos e disponibilização das rotas privadas para: criar uma seleção, buscar todas seleções existentes, buscas os detalhes de uma seleção, editar uma seleção e apagar uma seleção e método que busca os detalhes de um inscrito.
 
 ### Versão 1.6
+* **Docker:** Adicionando scripts para criação do ambiente Docker da API.
