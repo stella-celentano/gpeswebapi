@@ -23,7 +23,7 @@ const ProjetosSchema = new Schema({
 
     dataInicio: {
         type: Date,
-        required: false
+        required: true
     },
 
     dataFim: {
