@@ -114,92 +114,107 @@ class Projetos {
     }
 
     update(req, res) {
-        // let titulo = req.params.titulo.replace(/%20/g, " ")
-        // let body = req.body
-        // let idIntegrantes = req.body['integrantes']
+        let titulo = req.params.titulo.replace(/%20/g, " ")
+        let body = req.body
+        let idIntegrantes = req.body['integrantes']
+        let teste = idIntegrantes
 
-        // console.log(req.body['integrantes'])
-
-        // projetosSchema.findOne({ titulo: { $eq: titulo } }, (err, data) => {
-        //     if (err) {
-        //         res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-        //     } else {
-        //         if (data.integrantes.length == 0 && idIntegrantes.length == 0) {
-        //             projetosSchema.updateOne({ titulo: titulo }, { $set: body }, (err, result) => {
-        //                 if (err) {
-        //                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-        //                 } else {
-        //                     res.status(201).json({ message: 'Projeto atualizado com sucesso', data: result })
-        //                 }
-        //             })
-        //         } else if (data.integrantes.length == 0 && idIntegrantes.length > 0) {
-        //             projetosSchema.updateOne({ titulo: titulo }, { $set: body }, (err, result) => {
-        //                 if (err) {
-        //                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-        //                 } else {
-        //                     idIntegrantes.forEach(elemento => {
-        //                         projetosSchema.findById(elemento, (err, integrante) => {
-        //                             if (integrante.projetosIntegrante == null) {
-        //                                 integrante.projetosIntegrante = data._id
-        //                             } else {
-        //                                 integrante.projetosIntegrante.push(data._id)
-        //                             }
-        //                             integrante.save({}, (err) => {
-        //                                 if (err) {
-        //                                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-        //                                 }
-        //                             })
-        //                         })
-        //                     })
-        //                 }
-        //             })
-        //         } else {
-        //             idIntegrantes.forEach(elemento => {
-        //                 data.integrantes.forEach(element => {
-        //                     if (element == elemento) {
-        //                         data.integrantes.splice(elemento, 1)
-        //                         idIntegrantes.splice(elemento, 1)
-        //                     }
-        //                 })
-        //             })
-        //             projetosSchema.updateOne({ titulo: titulo }, { $set: body }, (err, result) => {
-        //                 if (err) {
-        //                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-        //                 } else {
-        //                     idIntegrantes.forEach(elemento => {
-        //                         integrantesSchema.findById(elemento, (err, dados) => {
-        //                             if (err) {
-        //                                 res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-        //                             } else {
-        //                                 dados.projetosIntegrante.push(result._id)
-        //                                 dados.save({}, (err) => {
-        //                                     if (err) {
-        //                                         res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-        //                                     }
-        //                                 })
-        //                             }
-        //                         })
-        //                     })
-        //                     data.integrantes.forEach(elemento => {
-        //                         integrantesSchema.findById(elemento, (err, dados) => {
-        //                             if (err) {
-        //                                 res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-        //                             } else {
-        //                                 dados.projetosIntegrante.pull(result._id)
-        //                                 dados.save({}, (err) => {
-        //                                     if (err) {
-        //                                         res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
-        //                                     }
-        //                                 })
-        //                             }
-        //                         })
-        //                     })
-        //                     res.status(201).json({ message: 'Projeto atualizado com sucesso', data: result })
-        //                 }
-        //             })
-        //         }
-        //     }
-        // })
+        projetosSchema.findOne({ titulo: { $eq: titulo } }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                if (data.integrantes == null && idIntegrantes.length == 0) {
+                    projetosSchema.updateOne({ titulo: titulo }, { $set: body }, (err, result) => {
+                        if (err) {
+                            res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                        } else {
+                            res.status(201).json({ message: 'Projeto atualizado com sucesso', data: result })
+                        }
+                    })
+                } else if (data.integrantes == null && idIntegrantes.length > 0) {
+                    projetosSchema.updateOne({ titulo: titulo }, { $set: body }, (err, result) => {
+                        if (err) {
+                            res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                        } else {
+                            idIntegrantes.forEach(elemento => {
+                                integrantesSchema.findById(elemento, (err, integrante) => {
+                                    if (integrante.projetosIntegrante == null) {
+                                        integrante.projetosIntegrante = data._id
+                                    } else {
+                                        integrante.projetosIntegrante.push(data._id)
+                                    }
+                                    integrante.save({}, (err) => {
+                                        if (err) {
+                                            res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                                        }
+                                    })
+                                })
+                            })
+                            res.status(201).json({ message: 'Projeto atualizado com sucesso', data: result })
+                        }
+                    })
+                } else {
+                    projetosSchema.updateOne({ titulo: titulo }, { $set: body }, (err, result) => {
+                        if (err) {
+                            res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                        } else {
+                            let idIguais = []
+                            data.integrantes.forEach(integrante => {
+                                idIntegrantes.forEach(idDosIntegrantes => {
+                                    if (integrante == idDosIntegrantes) {
+                                        idIguais.push(integrante)
+                                    }
+                                })
+                            })
+                            idIguais.forEach(id => {
+                                data.integrantes.pull(id)
+                                idIntegrantes.splice(id, 1)
+                            })
+                            if (idIntegrantes.length > 0) {
+                                idIntegrantes.forEach(elemento => {
+                                    integrantesSchema.findById(elemento, (err, dados) => {
+                                        if (err) {
+                                            res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                                        } else {
+                                            if (dados.projetosIntegrante == null) {
+                                                dados.projetosIntegrante = body._id
+                                            } else {
+                                                dados.projetosIntegrante.push(body._id)
+                                            }
+                                            dados.save({}, (err) => {
+                                                if (err) {
+                                                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                                                }
+                                            })
+                                        }
+                                    })
+                                })
+                            }
+                            if (data.integrantes.length > 0) {
+                                data.integrantes.forEach(elemento => {
+                                    integrantesSchema.findById(elemento, (err, integrantes) => {
+                                        if (err) {
+                                            res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                                        } else {
+                                            integrantes.projetosIntegrante.splice(body._id, 1)
+                                            if (integrantes.projetosIntegrante < 1) {
+                                                integrantes.projetosIntegrante = null
+                                            }
+                                            integrantes.save({}, (err) => {
+                                                if (err) {
+                                                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                                                }
+                                            })
+                                        }
+                                    })
+                                })
+                            }
+                            res.status(201).json({ message: 'Projeto atualizado com sucesso', data: result })
+                        }
+                    })
+                }
+            }
+        })
     }
 
     delete(req, res) {
@@ -218,6 +233,9 @@ class Projetos {
                         } else {
                             integrante.forEach(elemento => {
                                 elemento.integrantes.splice(projetoId, 1)
+                                if (elemento.integrantes.length < 1) {
+                                    elemento.integrantes = null
+                                }
                                 projetosSchema.updateOne({ _id: elemento._id }, { $set: elemento }, (err) => {
                                     if (err) {
                                         res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
