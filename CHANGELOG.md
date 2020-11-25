@@ -60,3 +60,4 @@ Log de alterações da aplicação
 
 ### Versão 1.6
 * **Docker:** Adicionando scripts para criação do ambiente Docker da API.
+* **Email:** Corrigindo a palavra Software no template dos emails.
