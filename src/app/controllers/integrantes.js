@@ -137,6 +137,7 @@ class Integrantes {
 
         integrantesSchema
             .where('situacao', false)
+            .populate('projetosIntegrante', { titulo: 1 })
             .find(query)
             .sort([[columnSort, valueSort]])
             .skip(skip)
@@ -189,6 +190,7 @@ class Integrantes {
 
         integrantesSchema
             .find(query)
+            .populate('projetosIntegrante', { titulo: 1 })
             .where('situacao', true)
             .sort([[columnSort, valueSort]])
             .skip(skip)
@@ -245,6 +247,9 @@ class Integrantes {
                         } else {
                             projeto.forEach(elemento => {
                                 elemento.integrantes.pull(integranteId)
+                                if(elemento.integrantes.length < 1){
+                                    elemento.integrantes = null
+                                }
                                 projetosSchema.updateOne({ _id: elemento._id }, { $set: elemento }, (err) => {
                                     if (err) {
                                         res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
