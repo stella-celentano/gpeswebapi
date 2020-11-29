@@ -57,3 +57,10 @@ Log de alterações da aplicação
 ### Versão 1.5
 * **Projetos:** Implementação das rotas e metodo editar e getByTitulo.
 * **Processo Seletivo - Inscrição:** Implementado envio de email assim que a inscrição é realizada. Alteração do método create inscrição para suportar o relacionamento 1:N com seleção. Implementação dos métodos e disponibilização das rotas privadas para: criar uma seleção, buscar todas seleções existentes, buscas os detalhes de uma seleção, editar uma seleção e apagar uma seleção e método que busca os detalhes de um inscrito.
+
+### Versão 1.6
+* **Docker:** Adicionando scripts para criação do ambiente Docker da API.
+* **Email:** Corrigindo a palavra Software no template dos emails.
+* **Projetos:** Refatoração do metodo editar.
+* **Integrantes:** Refatoração dos metodos ex-integrantes e atuais-integrantes para trazer o titulo do projeto.
+* **Processo Seletivo - Inscrição:** Implementando método que busca a seleção que está aberta, validando se o status é verdadeiro e se as dastas estão dentro do limite correto comparando com a data atual em que a requisição estiver sendo feita.

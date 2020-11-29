@@ -1,5 +1,6 @@
 const SelecaoSchema = require('./../models/selecao');
 const InscricaoSchema = require('./../models/inscricao');
+const { count } = require('./../models/selecao');
 
 class Selecao {
 
@@ -56,6 +57,35 @@ class Selecao {
                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
                 } else {
                     res.status(200).json({ message: 'Seleção recuperada com sucesso', data: data })
+                }
+            })
+    }
+
+    getSelecaoAberta(req, res) {
+        SelecaoSchema
+            .where('status').equals(true)
+            .where('dataInicio').lte(new Date)
+            .where('dataFim').gte(new Date)
+            .estimatedDocumentCount()
+            .find({})
+            .exec((err, data) => {
+                let totalDocuments = count.length
+                if (err) {
+                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                } else {
+                    if (totalDocuments > 0) {
+                        res.status(200).json({
+                            message: 'Seleção recuperada com sucesso',
+                            data: data,
+                            count: totalDocuments
+                        })
+                    } else {
+                        res.status(204).json({
+                            message: 'Não há seleção aberta no momento',
+                            data: data,
+                            count: totalDocuments
+                        })
+                    }
                 }
             })
     }
