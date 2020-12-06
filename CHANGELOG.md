@@ -64,3 +64,6 @@ Log de alterações da aplicação
 * **Projetos:** Refatoração do metodo editar.
 * **Integrantes:** Refatoração dos metodos ex-integrantes e atuais-integrantes para trazer o titulo do projeto.
 * **Processo Seletivo - Inscrição:** Implementando método que busca a seleção que está aberta, validando se o status é verdadeiro e se as dastas estão dentro do limite correto comparando com a data atual em que a requisição estiver sendo feita.
+
+### Versão 1.7
+* **Processo Seletivo - Inscrição:** Removida a verificação do campo dataInicio no corpo da requisição do método de update e inserido o campo período no populate da busca de uma seleção pelo título.
