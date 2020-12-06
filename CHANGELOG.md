@@ -67,3 +67,5 @@ Log de alterações da aplicação
 
 ### Versão 1.7
 * **Processo Seletivo - Inscrição:** Removida a verificação do campo dataInicio no corpo da requisição do método de update e inserido o campo período no populate da busca de uma seleção pelo título.
+
+### Versão 1.8
