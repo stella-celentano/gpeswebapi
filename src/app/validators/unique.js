@@ -9,8 +9,7 @@ const SobreSchema = require('./../models/sobre');
 const AutoresSchema = require('./../models/autores');
 const InscricaoSchema = require('./../models/inscricao');
 const ProjetosSchema = require('../models/projetos');
-
-
+const SelecaoSchema = require('../models/selecao');
 
 class UniqueValidators {
 
@@ -269,7 +268,21 @@ class UniqueValidators {
         })
     }
 
+    uniqueSelecaoTitulo(req, res) {
+        const titulo = req.query.title.replace(/%20/g, " ")
 
+        SelecaoSchema.find({ titulo: { '$regex': `^${titulo}$`, '$options': 'i' } }, function (err, result) {
+            if (err) {
+                res.status(500).json({ message: "Houve um erro ao processar sua requisição.", error: err })
+            } else {
+                if (result.length > 0) {
+                    res.status(200).json({ message: "Já existe um documento com esse título.", result: result.length })
+                } else {
+                    res.status(200).json({ message: "Título disponível.", result: result.length })
+                }
+            }
+        })
+    }
 
 
 
