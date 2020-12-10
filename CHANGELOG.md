@@ -71,3 +71,4 @@ Log de alterações da aplicação
 ### Versão 1.8
 * **Projetos:** Criação das rotas publicas de projeto e dos metodos de getProjetoConcluido e getProjetoAtuais.
 * **Processo Seletivo - Inscrição:** Implementando verificação de título único para uma seleção.
+* **Processo Seletivo - Exportar Planilha:** Adicionando todos os campos de inscrito no populate do método get pelo título de uma seleção, para que no momneot da exportação dos dados para a planilha, contenha tudo o que for necessário referente ao inscrito.
