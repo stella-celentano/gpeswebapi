@@ -69,3 +69,4 @@ Log de alterações da aplicação
 * **Processo Seletivo - Inscrição:** Removida a verificação do campo dataInicio no corpo da requisição do método de update e inserido o campo período no populate da busca de uma seleção pelo título.
 
 ### Versão 1.8
+* **Projetos:** Criação das rotas publicas de projeto e dos metodos de getProjetoConcluido e getProjetoAtuais.
