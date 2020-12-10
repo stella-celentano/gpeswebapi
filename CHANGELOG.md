@@ -70,3 +70,4 @@ Log de alterações da aplicação
 
 ### Versão 1.8
 * **Projetos:** Criação das rotas publicas de projeto e dos metodos de getProjetoConcluido e getProjetoAtuais.
+* **Processo Seletivo - Inscrição:** Implementando verificação de título único para uma seleção.
