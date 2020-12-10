@@ -254,5 +254,110 @@ class Projetos {
             }
         })
     }
+
+    getAtuaisProjetos(req, res) {
+
+        const limit = 4
+
+        let query = {}
+        let page = req.query.page
+        let skip = limit * (page - 1)
+        let { columnSort, valueSort } = req.query
+
+        projetosSchema
+            .where('situacao', false)
+            .populate('integrantes', { nome: 1 })
+            .find(query)
+            .sort([[columnSort, valueSort]])
+            .skip(skip)
+            .limit(limit)
+            .exec((err, data) => {
+                if (err) {
+                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                } else {
+                    projetosSchema
+                        .where('situacao', false)
+                        .estimatedDocumentCount()
+                        .find(query)
+                        .exec((err, count) => {
+                            let totalDocuments = count.length
+                            if (err) {
+                                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                            } else {
+                                if (totalDocuments > 0) {
+                                    res.status(200).json({
+                                        message: 'Dados recuperados com sucesso',
+                                        data: data,
+                                        page: page,
+                                        limit: limit,
+                                        count: totalDocuments,
+                                    })
+                                } else {
+                                    res.status(204).json({
+                                        message: 'Não há dados para serem exibidos',
+                                        data: data,
+                                        page: page,
+                                        limit: limit,
+                                        count: totalDocuments,
+                                    })
+                                }
+                            }
+                        })
+                }
+            })
+    }
+
+    getProjetosConcluidos(req, res) {
+
+        const limit = 4
+
+        let query = {}
+        let page = req.query.page
+        let skip = limit * (page - 1)
+        let { columnSort, valueSort } = req.query
+
+
+        projetosSchema
+            .find(query)
+            .populate('integrantes', { nome: 1 })
+            .where('situacao', true)
+            .sort([[columnSort, valueSort]])
+            .skip(skip)
+            .limit(limit)
+            .exec((err, data) => {
+                if (err) {
+                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                } else {
+                    projetosSchema
+                        .where('situacao', true)
+                        .estimatedDocumentCount()
+                        .find(query)
+                        .exec((err, count) => {
+                            let totalDocuments = count.length
+                            if (err) {
+                                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', err: err })
+                            } else {
+                                if (totalDocuments > 0) {
+                                    res.status(200).json({
+                                        message: 'Dados recuperados com sucesso',
+                                        data: data,
+                                        page: page,
+                                        limit: limit,
+                                        count: totalDocuments,
+                                    })
+                                } else {
+                                    res.status(204).json({
+                                        message: 'Não há dados para serem exibidos',
+                                        data: data,
+                                        page: page,
+                                        limit: limit,
+                                        count: totalDocuments,
+                                    })
+                                }
+                            }
+                        })
+                }
+            })
+    }
 }
 module.exports = new Projetos()
