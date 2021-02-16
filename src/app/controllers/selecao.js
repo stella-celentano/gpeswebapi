@@ -51,7 +51,7 @@ class Selecao {
         let title = req.params.title.replace(/%20/g, " ")
 
         SelecaoSchema.findOne({ titulo: { $eq: title } })
-            .populate('inscritos', { nome: 1, email: 1, curso: 1, semestre: 1, periodo: 1 })
+            .populate('inscritos', { nome: 1, email: 1, telefone: 1, cidade: 1, ra: 1, curso: 1, periodo: 1, semestre: 1, descricao: 1 })
             .exec((err, data) => {
                 if (err) {
                     res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })

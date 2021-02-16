@@ -9,6 +9,7 @@ const SobreRoutes = require('./routes/sobre.public');
 const PublicacoesRoutes = require('./routes/publicacoes.public');
 const EventoRoutes = require('./routes/eventos.public');
 const ValidatorsRoutes = require('./routes/validators.public');
+const ProjetosRoutes = require('./routes/projetos.public');
 
 app.use('/authentication', AuthenticationRoutes)
 app.use('/contato', ContatoRoutes)
@@ -18,5 +19,6 @@ app.use('/sobre', SobreRoutes);
 app.use('/publicacoes', PublicacoesRoutes)
 app.use('/eventos', EventoRoutes);
 app.use('/validators', ValidatorsRoutes);
+app.use('/projetos', ProjetosRoutes);
 
 module.exports = app
