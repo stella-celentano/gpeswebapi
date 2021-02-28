@@ -6,6 +6,11 @@ const SelecaoSchema = new Schema({
         required: true,
         trim: true
     },
+    descricao: {
+        type: String,
+        required: true,
+        trim: true
+    },
     dataInicio: {
         type: Date,
         required: true
