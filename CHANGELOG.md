@@ -75,3 +75,5 @@ Log de alterações da aplicação
 
 ### Versão 1.9
 * **Processo Seletivo - Seleção:** Inserido campo descrição na model selecao.
+
+### Versão 1.10
