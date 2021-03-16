@@ -77,5 +77,9 @@ Log de alterações da aplicação
 * **Processo Seletivo - Seleção:** Inserido campo descrição na model selecao.
 
 ### Versão 1.10
+<<<<<<< HEAD
 * **Processo Seletivo - Seleção (Envio Emails):** Criando a funcionalidade de enviar emails com um unico conteudo e assunto para todos os inscritos do processso seletivo, foi criado uma rota para ser chamada no front-end.
 * **Processo Seletivo - Seleção(Gráficos):** Criação de função que faz a contagem de registros dos inscritos de um processo seletivo, separando por curso, período e semestre para serem apresentados em gráficos.
+=======
+* **Processo Seletivo - Seleção(Gráficos):** Criação de função que faz a contagem de registros dos inscritos de um processo seletivo, separando por curso, período e semestre para serem apresentados em gráficos.
+>>>>>>> 5797aff121e7e66982f5eed191f983c7580cf87c
