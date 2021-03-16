@@ -77,3 +77,4 @@ Log de alterações da aplicação
 * **Processo Seletivo - Seleção:** Inserido campo descrição na model selecao.
 
 ### Versão 1.10
+* **Processo Seletivo - Seleção(Gráficos):** Criação de função que faz a contagem de registros dos inscritos de um processo seletivo, separando por curso, período e semestre para serem apresentados em gráficos.

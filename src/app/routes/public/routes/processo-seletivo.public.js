@@ -7,5 +7,6 @@ const SelecaoController = require('./../../../controllers/selecao');
 route.get('/listar-todos', ProcessoSeletivoController.getWithParams);
 route.get('/selecao-aberta', SelecaoController.getSelecaoAberta);
 route.post('/criar', InscricaoController.sendMailConfirmSubscribe);
+route.get('/listar-inscritos/:title', SelecaoController.getDataForChart);
 
 module.exports = route;
