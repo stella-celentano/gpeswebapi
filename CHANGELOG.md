@@ -77,3 +77,4 @@ Log de alterações da aplicação
 * **Processo Seletivo - Seleção:** Inserido campo descrição na model selecao.
 
 ### Versão 1.10
+* **Processo Seletivo - Seleção (Envio Emails):** Criando a funcionalidade de enviar emails com um unico conteudo e assunto para todos os inscritos do processso seletivo, foi criado uma rota para ser chamada no front-end.
