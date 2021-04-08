@@ -10,15 +10,17 @@ const PublicacoesRoutes = require('./routes/publicacoes.public');
 const EventoRoutes = require('./routes/eventos.public');
 const ValidatorsRoutes = require('./routes/validators.public');
 const ProjetosRoutes = require('./routes/projetos.public');
+const HomeRoutes = require('./routes/home.public');
 
-app.use('/authentication', AuthenticationRoutes)
-app.use('/contato', ContatoRoutes)
+app.use('/home', HomeRoutes);
+app.use('/authentication', AuthenticationRoutes);
+app.use('/contato', ContatoRoutes);
 app.use('/processo-seletivo', ProcessoSeletivoRoutes);
-app.use('/integrantes', IntegrantesRoutes)
+app.use('/integrantes', IntegrantesRoutes);
 app.use('/sobre', SobreRoutes);
-app.use('/publicacoes', PublicacoesRoutes)
+app.use('/publicacoes', PublicacoesRoutes);
 app.use('/eventos', EventoRoutes);
 app.use('/validators', ValidatorsRoutes);
 app.use('/projetos', ProjetosRoutes);
 
-module.exports = app
+module.exports = app;

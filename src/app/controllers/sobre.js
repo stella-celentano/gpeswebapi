@@ -1,3 +1,4 @@
+const { count } = require('./../models/sobre')
 const SobreSchema = require('./../models/sobre')
 
 class Sobre {
@@ -57,6 +58,32 @@ class Sobre {
         })
     }
 
+    getByPrincipal(req, res) {
+        SobreSchema
+            .where('principal').equals(true)
+            .find({})
+            .exec((err, data) => {
+                let totalPrincipal = count.length;
+                if (err) {
+                    res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+                } else {
+                    if (totalPrincipal > 0) {
+                        res.status(200).json({
+                            message: 'Sobre Principal recuperado com sucesso',
+                            data: data,
+                            count: totalPrincipal
+                        })
+                    } else {
+                        res.status(204).json({
+                            message: 'Não há um sobre principal cadastrado',
+                            data: data,
+                            count: totalPrincipal
+                        })
+                    }
+                }
+            })
+    }
+
     create(req, res) {
         const body = req.body
 
@@ -72,7 +99,7 @@ class Sobre {
     update(req, res) {
         let title = req.params.title.replace(/%20/g, " ")
         let body = req.body
-        
+
         SobreSchema.updateOne({ titulo: title }, { $set: body }, (err, data) => {
             if (err) {
                 res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
@@ -96,7 +123,7 @@ class Sobre {
     }
 
     updatePrincipal(req, res) {
-        SobreSchema.updateMany({ }, { principal: false },{ multi: true }, function(){})
+        SobreSchema.updateMany({}, { principal: false }, { multi: true }, function () { })
         SobreSchema.updateOne({ _id: req.params.id }, { principal: true }, (err, data) => {
             if (err) {
                 res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
@@ -116,7 +143,7 @@ class Sobre {
         })
     }
 
-    
+
 }
 
 module.exports = new Sobre()

@@ -14,6 +14,7 @@ const SobreRoutes = require('./routes/sobre.private');
 const AutoresRoutes = require('./routes/autores.private');
 const ProjetosRoutes = require('./routes/projetos.private');
 const SelecaoRoutes = require('./routes/selecao.private');
+const HomeRoutes = require('./routes/home.private');
 
 app.use('/usuario', UserRoutes);
 app.use('/validators', ValidatorRoutes);
@@ -28,5 +29,6 @@ app.use('/sobre', SobreRoutes);
 app.use('/autores', AutoresRoutes);
 app.use('/projetos', ProjetosRoutes);
 app.use('/selecao', SelecaoRoutes);
+app.use('/home', HomeRoutes);
 
-module.exports = app
+module.exports = app;
