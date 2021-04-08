@@ -127,62 +127,62 @@ class Selecao {
                             }
 
                             let cursoData = [
-                                {
-                                    name: "Análise e Desenvolvimento de Sistemas", 
+                                {         
+                                    name: "ADS__________", 
                                     value: totalAds
                                 },
-                                {
-                                    name: "Sistemas para Internet",
+                                {    
+                                    name: "SI____________",
                                     value: totalSi
                                 }
                             ]
 
                             let periodoData= [
-                                {
-                                    name: "Matutino",
+                                { 
+                                    name: "Matutino____",
                                     value: totalMatutino
                                 },
                                 {
-                                    name: "Vespertino",
+                                    name: "Vespertino__",
                                     value: totalVespertino
                                 },
-                                {
-                                    name: "Noturno",
+                                {         
+                                    name: "Noturno_____",
                                     value: totalNoturno
                                 }
                             ]
 
                             let semestreData= [
                                 {
-                                    name: "1º semestre",
+                                    name: "1º semestre_",
                                     value: totalSemestre1
                                 },
                                 {
-                                    name: "2º semestre",
+                                    name: "2º semestre_",
                                     value: totalSemestre2
                                 },
                                 {
-                                    name: "3º semestre",
+                                    name: "3º semestre_",
                                     value: totalSemestre3
                                 },
                                 {
-                                    name: "4º semestre",
+                                    name: "4º semestre_",
                                     value: totalSemestre4
                                 },
                                 {
-                                    name: "5º semestre",
+                                    name: "5º semestre_",
                                     value: totalSemestre5
                                 },                               
                                 {
-                                    name: "6º semestre",
+                                    name: "6º semestre_",
                                     value: totalSemestre6
                                 },                               
                                 {
-                                    name: "7º semestre",
+                                    name: "7º semestre_",
                                     value: totalSemestre7
                                 },                               
                                 {
-                                    name: "8º semestre",
+                                    name: "8º semestre_",
                                     value: totalSemestre8
                                 }                                                                            
                             ]
