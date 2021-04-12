@@ -46,6 +46,18 @@ class Home {
             })
     }
 
+    getByTitle(req, res) {
+        let title = req.params.title.replace(/%20/g, " ")
+
+        HomeSchema.findOne({ titulo: { $eq: title } }, (err, data) => {
+            if (err) {
+                res.status(500).json({ message: 'Houve um erro ao processar sua requisição', error: err })
+            } else {
+                res.status(200).json({ message: 'Informação da Home recuperada com sucesso', data: data })
+            }
+        })
+    }
+
     create(req, res) {
         const body = req.body;
 
