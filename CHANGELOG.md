@@ -82,3 +82,6 @@ Log de alterações da aplicação
 
 ### Versão 1.11
 * **Processo Seletivo - Seleção(Gráficos):** Alterando o tamanho das palavras (inserindo "_") que os gráficos importam para tentar deixá-los com o mesmo tamanho.
+
+### Versão 1.12
+* **Home:** Implementação do CRUD para a home, disponibilização das rotas públicas e privadas e implementação do verificador de título único para um registro da home.
